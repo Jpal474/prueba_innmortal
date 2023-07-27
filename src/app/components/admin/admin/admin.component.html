@@ -1,0 +1,11 @@
+<div class="container-fluid g-0">
+
+    <app-headeradmin (sideNavToggled)="sideNavStatus = $event;"></app-headeradmin>
+    <main>
+        <app-sidebar [sideNavStatus]="sideNavStatus" [ngClass]="{'app-sidebarencargado-open':sideNavStatus}"></app-sidebar>
+        <div class="display-area p-3" [ngClass]="{'display-area-shrink':sideNavStatus}">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+
+</div>

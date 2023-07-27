@@ -1,0 +1,175 @@
+<h1 class=" mt-5 text-center">
+
+    Datos de Supermercado</h1>
+<div class="row justify-content-evenly">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header text-center">
+                {{supermercado.nombre}}
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <p><span class="smaller">Calle:</span> <span class="smaller-response"> {{supermercado.calle}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p><span class="smaller">Ciudad:</span> <span class="smaller-response"> {{supermercado.ciudad}}</span></p>
+                    </div>
+
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <p> <span class="smaller">Número:</span> <span class="smaller-response"> {{supermercado.numero}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p> <span class="smaller">Razón Social:</span> <span class="smaller-response"> {{supermercado.razon_social}}</span></p>
+
+                    </div>
+
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <p> <span class="smaller">C.P.:</span> <span class="smaller-response"> {{supermercado.codigo_postal}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p> <span class="smaller">Correo Electronico:</span> <span class="smaller-response"> {{supermercado.correo}}</span></p>
+
+                    </div>
+
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <p> <span class="smaller">Colonia:</span> <span class="smaller-response"> {{supermercado.colonia}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p> <span class="smaller">Telefono:</span> <span class="smaller-response"> {{supermercado.telefono}}</span></p>
+
+                    </div>
+                </div>
+                <div class="row justify-content-around">
+                    <div class="col-4">
+                        <p> <span class="smaller">Estado:</span> <span class="smaller-response"> {{supermercado.estado}}</span></p>
+                    </div>
+                    <div class="col-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header text-center">
+                Encargado
+            </div>
+            <div class="row justify-content-around">
+                <div class="col-4">
+                    <img src="../../../../../assets/recursos/super-admin/CARD ENCARGADO/avatar_encargado.svg" class="w-75 p-1">
+                </div>
+                <div class="col-4">
+                    <p>Nombre</p>
+                    <p>Fecha Nacimiento</p>
+                    <p>Género</p>
+                    <p>correo</p>
+                    <p>numero</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card text-center w-75 mt-5" style="margin-left: 10%;">
+    <div class="card-header" style="background-color: white; border: none;">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item w-25" routerLinkActive="active">
+                <a class="nav-link" data-bs-toggle="tab" href="#departamentos">departamentos</a>
+            </li>
+            <li class="nav-item w-25" routerLinkActive="active">
+                <a class="nav-link" data-bs-toggle="tab" href="#trabajadores">trabajadores</a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="card-body tab-content">
+        <div class="tab-pane active" id="departamentos">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="th" scope="col">Departamentos</th>
+                        <th class="th" scope="col">Trabajadores</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Belleza y Perfumeria</th>
+                        <td>6 Trabajadores</td>
+                    </tr>
+                    <tr>
+
+
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="tab-pane" id="trabajadores">
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="th" scope="col">ID</th>
+                            <th class="th" scope="col">Nombre</th>
+                            <th class="th" scope="col">Apellidos</th>
+                            <th class="th" scope="col">Días Laborales</th>
+                            <th class="th" scope="col">Telefono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">FV-12</th>
+                            <td>Eduardo</td>
+                            <td>Robles Ramos</td>
+                            <td>L M M J V</td>
+                            <td>4423897802</td>
+                        </tr>
+                        <tr>
+
+
+                </table>
+            </div>
+
+            <nav aria-label="Page navigation example align-items-center">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

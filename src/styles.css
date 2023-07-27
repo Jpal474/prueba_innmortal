@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+ .form-control:focus {
+     outline: 0px none #fff !important;
+     border-color: transparent;
+ }
+ 
+ .form-control {
+     outline: 0px none #fff !important;
+ }
+ 
+ .input-group label {
+     z-index: 100000;
+ }

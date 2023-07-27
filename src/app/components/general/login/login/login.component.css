@@ -1,0 +1,94 @@
+.page {
+    height: 950px;
+    width: 100%;
+    background-image: url(../../../../../assets/recursos/login/IMAGENES/login-wallpaper.jpg);
+    background-size: cover;
+}
+
+.img-logo {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+}
+
+.card-header {
+    font-size: 1.3rem;
+}
+
+p {
+    color: white;
+    position: absolute;
+    top: 55%;
+    left: 20%;
+}
+
+.card {
+    width: 25%;
+    height: 500px;
+    position: absolute;
+    right: 20%;
+}
+
+.card-header {
+    background-color: white;
+}
+
+.input-group {
+    margin-top: 10%;
+}
+
+.btn {
+    background-color: #002b55;
+}
+
+.input-group label {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-group span img {
+    width: 20px;
+    height: 20px;
+}
+
+.input-group input:focus~label,
+.input-group input:valid~label {
+    top: -5px;
+    background: white;
+    box-shadow: none;
+}
+
+.input-group input:focus~span,
+.input-group input:valid~span {
+    top: -5px;
+}
+
+.form-control:focus {
+    border-color: transparent
+}
+
+@media screen and (max-width:900px) {
+    .card {
+        margin-left: 10%;
+        width: 25%;
+        height: 25%;
+    }
+    .input-group label {
+        font-size: 1px;
+        font-weight: 100;
+    }
+    .input-group span img {
+        width: 5px;
+        height: 5px;
+    }
+    .card-header {
+        font-size: 0.5rem;
+    }
+}

@@ -1,0 +1,99 @@
+<h1 class="text-center mt-5">Registro de Trabajadores</h1>
+<a style="color:#0055aa "> <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" style="width: 30px; height: 30px;" class="float-start ms-5"> Regresar </a>
+<div class="container">
+    <p>Los campos con (*) con son obligatorios</p>
+    <div class="container-dep">
+        <form autocomplete="off" [formGroup]="trabajador_departamento_formulario" class="mt-2">
+            <div class="input-group mb-3 mt-5">
+                <input type="text" class="form-control" formControlName="departamento">
+                <label>Departamento<span>*</span></label>
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="max-width: 150px; min-width: 30px;">Dropdown</button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+            <small *ngIf="departamentoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+
+        </form>
+    </div>
+</div>
+
+<!--Card Para Registro -->
+<div class="container align-items-center">
+    <div class="card" style="max-width: 90%;">
+        <div class="card-header text-center">
+            Datos del Trabajador
+            <hr>
+        </div>
+        <div class="card-body ">
+            <div class="container">
+                <form autocomplete="off" [formGroup]="trabajador_formulario" (ngSubmit)="guardarTrabajador()" class="mt-2">
+                    <div class="form-group row justify-content-center">
+                        <div class="col-6 col-sm-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="id" [class.is-invalid]="idNoValido">
+
+                                <label>ID<span>*</span></label>
+                            </div>
+                            <small *ngIf="idNoValido" class="text-danger"> El campo no puede estar vacio</small>
+
+                        </div>
+                        <div class="col-6 col-sm-3">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+
+                                <label>Nombre<span>*</span></label>
+                            </div>
+                            <small *ngIf="nombreNoValido" class="text-danger"> El campo no puede estar vacio</small>
+
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="apellidos" [class.is-invalid]="apellidosNoValido">
+
+                                <label>Apellidos<span>*</span></label>
+                            </div>
+                            <small *ngIf="apellidosNoValido" class="text-danger"> El campo no puede estar vacio</small>
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="form-group row justify-content-center mt-5">
+                        <div class="col-6 col-sm-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="dias_laborales" [class.is-invalid]="diasNoValidos">
+
+                                <label>Días Laborales<span>*</span></label>
+                            </div>
+                            <small *ngIf="diasNoValidos" class="text-danger"> El campo no puede estar vacio</small>
+
+                        </div>
+                        <div class="col-6 col-sm-3">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
+
+                                <label>Telefono</label>
+                            </div>
+                            <small *ngIf="telefonoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+
+                        </div>
+                        <div class="col-6 col-sm-3">
+
+                        </div>
+
+
+                        <div class="form-group row mt-4">
+                            <button type="submit" class="btn btn-success w-50 p3 " style="margin-left: 18%;">Registrar</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>

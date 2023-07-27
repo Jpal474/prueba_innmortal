@@ -1,0 +1,51 @@
+#ulLi {
+    text-decoration: none;
+    list-style: none;
+}
+
+#li1 {
+    margin-top: 15%;
+    margin-bottom: 5%;
+    text-decoration: none;
+}
+
+#myFooter {
+    background-color: #1e2227;
+}
+
+.verticalLine {
+    height: 300px;
+    border-right: 1px solid white;
+    position: absolute;
+    left: -10%;
+}
+
+.vr {
+    margin-top: 5%;
+    border-right: 1px solid white;
+    height: 200px;
+}
+
+@media screen and (max-width:900px) {
+    .img-footer {
+        width: 10px;
+    }
+    #ulLi {
+        position: absolute;
+        left: 0;
+    }
+    #ulLi a {
+        font-size: 10px;
+    }
+    #myFooter {
+        height: 500px;
+    }
+    #ulLi a::after {
+        content: "\a";
+        white-space: pre;
+    }
+    #myFooter p {
+        font-size: 10px;
+        color: white;
+    }
+}

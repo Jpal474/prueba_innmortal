@@ -1,0 +1,22 @@
+.card {
+    width: 110%;
+}
+
+.card-header {
+    background-color: #343a40;
+    color: white
+}
+
+.th {
+    background-color: #33383e;
+    color: white;
+}
+
+.smaller {
+    font-size: 70%;
+    font-weight: bold;
+}
+
+.smaller-response {
+    font-size: 80%;
+}

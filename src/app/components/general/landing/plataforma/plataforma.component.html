@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<section id="platform">
+    <h1 class="text-center">Nuestra Plataforma</h1>
+    <div class="badge fs-5 text-wrap" style="color: black; text-align: center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam semper, leo at viverra suscipit, enim ex feugiat sem, id vulputate erat nisl id justo. Phasellus scelerisque consectetur consectetur. Fusce quis sapien sodales, condimentum leo in, lacinia
+        elit. Aenean at efficitur lorem, sit amet lobortis elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam eu molestie eros. Pellentesque eu ipsum at ipsum facilisis consectetur. Quisque eu accumsan nisi.
+        Vivamus lobortis metus urna, vitae ultricies sapien consectetur vel.
+    </div>
+</section>
+
+<section id="benefits">
+    <div class="container-benefits">
+        <h1 class="text-center">Beneficios</h1>
+        <div class="container text-center mb-5 mt-4">
+            <div class="row jusify-content-center">
+                <div class="col" *ngFor="let imagen of imagenesbeneficios">
+                    <div class="card align-items-center">
+                        <img [src]="imagen" class="card-img-top mt-2" width="60px" height="60px" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">Lorem Ipsum</h5>
+                            <div class="container">
+                                <hr />
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at consequat lectus. In convallis tincidunt pulvinar. Fusce mollis nec diam a scelerisque. Nunc quis elit placerat, luctus nisi id
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="clients">
+    <h1 class="text-center">Clientes</h1>
+    <div class="container-fluid text-center mt-5">
+        <div class="row">
+            <div class="col" *ngFor="let imagen of imagenes">
+                <div class="card-clients">
+                    <div class="card-body">
+                        <img [src]="imagen" class="img-clients" />
+                        <h4 class="card-title">Lorem Ipsum</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

@@ -1,0 +1,28 @@
+<div class="page">
+
+    <img src="../../../../../assets/recursos/login/LOGO/logotipo.svg" width="15%" height="15%" class="img-logo">
+    <p>Inicia sesión para registrar <br> tu Supermercado</p>
+    <form autocomplete="off" [formGroup]="usuario_formulario" (ngSubmit)="login()">
+        <div class="card text mb-3" style="margin-top: 20vh;">
+            <div class="card-header text-center">Inicio de Sesion</div>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="email" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="correo">
+
+                    <label> <span><img src="../../../../../assets/recursos/login/ICONOS LOG IN/correo.svg" width="20px" height="20px"></span> Correo Electrónico </label>
+                </div>
+                <div class="input-group">
+                    <input type="password" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="contraseña">
+
+                    <label> <span><img src="../../../../../assets/recursos/login/ICONOS LOG IN/contrasena.svg" width="20px" height="20px"></span> Contraseña </label>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mt-4" type="submit">INICIAR SESIÓN</button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>

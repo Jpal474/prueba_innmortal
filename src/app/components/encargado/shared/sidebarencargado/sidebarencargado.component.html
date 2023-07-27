@@ -1,0 +1,20 @@
+<div class="side-nav-content">
+
+    <ul class="nav-list" [ngClass]="{'nav-list-open':sideNavStatus}">
+        <li class="nav-list-item" routerLinkActive="active">
+            <a [routerLink]="['departamentos']"><img src="../../../../../assets/recursos/encargado/SIDE BAR/departamentos.svg">
+            </a>
+            <span>
+          <a [routerLink]="['departamentos']">Departamentos</a>
+        </span>
+        </li>
+        <li class="nav-list-item" routerLinkActive="active">
+            <a [routerLink]="['trabajadores']"><img src="../../../../../assets/recursos/super-admin/SIDE BAR/supermercado.svg">
+            </a>
+            <span>
+          <a [routerLink]="['trabajadores']">Trabajadores</a>
+        </span>
+        </li>
+    </ul>
+
+</div>

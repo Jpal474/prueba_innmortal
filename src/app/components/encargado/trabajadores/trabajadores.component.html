@@ -1,0 +1,88 @@
+<h1 class="text-center mt-5">Listado de Trabajadores</h1>
+<div class="container">
+    <button type="button" class="btn btn-success float-end w-25" [routerLink]="['/encargado/registrar-trabajador']">AGREGAR TRABAJADOR</button>
+</div>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-6">
+        <div class="table-responsive mt-5">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="th" scope="col">ID</th>
+                        <th class="th" scope="col">Departamento</th>
+                        <th class="th" scope="col">Nombre(s)</th>
+                        <th class="th" scope="col">Apellidos</th>
+                        <th class="th" scope="col">Días Laborales</th>
+                        <th class="th" scope="col">Telefono</th>
+                        <th class="th" scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let trabajador of trabajadores">
+                        <th scope="row">{{trabajador.id}}</th>
+                        <td>''</td>
+                        <td>{{trabajador.nombre}}</td>
+                        <td>{{trabajador.apellidos}}</td>
+                        <td>{{trabajador.dias_laborales}}</td>
+                        <td>{{trabajador.telefono}}</td>
+                        <td>
+                            <a type="button" class="btn button text-white ms-4" [routerLink]="['/encargado/editar-trabajador',trabajador.id]">Editar</a>
+                            <a type="button" class="btn button-red text-white ms-4" (click)="eliminarTrabajador(trabajador.id)">Eliminar</a>
+                        </td>
+                    </tr>
+                    <tr>
+
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--Modal Eliminar-->
+<div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #8c0b0a;">
+                <div class="container">
+                    <img src="../../../../assets/recursos/encargado/ICONOS GENERALES/ICONOS ALERTAS/alert_eliminar.svg" style=" max-width: 80px;" class="mx-auto d-block">
+                </div>
+
+            </div>
+            <div class="modal-body text-center">
+                <h5 scope="row">¿Estás Seguro?</h5>
+                <h6>Se eliminará el trabajador</h6>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <button type="button" class="btn w-75" style="background-color: #414851; color: white;" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn button-red w-75" data-bs-toggle="modal" data-bs-target="#eliminadoModal">Eliminar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal Eliminado-->
+<div class="modal fade" id="eliminadoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #49803f;">
+                <div class="container">
+                    <img src="../../../../assets/recursos/encargado/ICONOS GENERALES/ICONOS ALERTAS/alert_exito.svg" style="max-width: 80px;" class="mx-auto d-block">
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h5 scope="row">¡Eliminado con éxito!</h5>
+                <h6>El trabajador se eliminó correctamente</h6>
+                <button type="button" class="btn" style="background-color: #49803f; color: white;">ACEPTAR</button>
+            </div>
+        </div>
+    </div>
+</div>

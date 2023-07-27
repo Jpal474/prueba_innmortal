@@ -1,0 +1,129 @@
+<h1 class="text-center mt-5">Edición de Encargado</h1>
+<a style="color:#0055aa " [routerLink]="['/admin/inicio']"> <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" style="width: 30px; height: 30px;"> Regresar </a>
+
+<div class="card mt-5">
+    <div class="card-body">
+        <div class="container text-center">
+            <p>Los campos con (*) son obligatorios</p>
+            <form autocomplete="off" [formGroup]="encargado_formulario" (ngSubmit)="updateEncargado()" class="mt-2">
+                <div class="form-group row">
+                    <div class="col">
+                        <div class="input-group">
+                            <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="nombre">
+
+                            <label>Nombre<span>*</span></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group">
+                            <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="apellido_paterno">
+
+                            <label>Apellido Paterno<span>*</span></label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group">
+                            <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="apellido_materno">
+
+                            <label>Apellido Materno<span>*</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="date" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="fecha_nacimiento">
+                                <label>Fecha de Nacimiento<span>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" formControlName="genero">
+                                <select class="form-select" aria-label="Default select example" formControlName="genero">
+                                    <option selected disabled>-Elija Un Género-</option>
+                                    <option value="FEMENINO">FEMENINO</option>
+                                    <option value="MASCULINO">MASCULINO</option>
+                                  </select>
+                                <label>Género<span>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="correo">
+                                <label>Correo Electrónico<span>*</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="telefono">
+                                <label>Teléfono<span>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input [type]="fieldTextType ? 'text' : 'password'" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="contraseña">
+                                <span class="input-group-text" (click)="toggleFieldTextType()"><img
+                                     [src]="fieldTextType? '../../../../../assets/recursos/super-admin/ICONOS GENERALES/ocultar.svg' : '../../../../../assets/recursos/super-admin/ICONOS GENERALES/mostrar.svg' "
+                                     width="20px" 
+                                     height="20px"></span>
+                                <label>Contraseña</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <input [type]="fieldTextType2 ? 'text' : 'password'" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)">
+                                <span class="input-group-text" (click)="toggleFieldTextType2()"><img
+                                     [src]="fieldTextType2? '../../../../../assets/recursos/super-admin/ICONOS GENERALES/ocultar.svg' : '../../../../../assets/recursos/super-admin/ICONOS GENERALES/mostrar.svg' "
+                                     width="20px" 
+                                     height="20px"></span>
+                                <label>Confirmar Contraseña</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <button type="submit" class="btn btn-success w-50 p3 " style="margin-left: 18%;">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal1-->
+
+
+
+<!--Modal2-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header " style="background-color:#d89323 ;">
+                <img src="../../../../../assets/recursos/encargado/ICONOS GENERALES/ICONOS ALERTAS/alert_editar.svg" class="w-25 p1" style="margin-left: 40%;">
+            </div>
+            <div class="modal-body text-center">
+                <h3>¿Estás Seguro?</h3>
+                <h6>Se modificarán los datos del trabajador</h6>
+                <button type="button" class="btn mt-3" style="background-color: #414851; color: white;">Cancelar</button>
+                <button type="button" class="btn mt-3 ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="background-color: #d89323; color: white;">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header " style="background-color:#017436 ;">
+                <img src="../../../../../assets/recursos/encargado/ICONOS GENERALES/ICONOS ALERTAS/alert_exito.svg" class="w-25 p1" style="margin-left: 40%;">
+            </div>
+            <div class="modal-body text-center">
+                <h3>¡Edición Exitosa!</h3>
+                <h6>Encargado guardado correctamente</h6>
+                <button type="button" class="btn btn-success mt-3" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+</div>
