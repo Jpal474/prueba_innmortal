@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { EncargadosComponent } from '../encargados/encargados.component';
 import { NuevoencargadoComponent } from '../encargados/nuevoencargado/nuevoencargado.component';
 import { EditarencargadoComponent } from '../encargados/editarencargado/editarencargado.component';

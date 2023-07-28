@@ -6,12 +6,13 @@ import { AdminComponent } from './components/admin/admin/admin.component';
 import { EncargadoComponent } from './components/encargado/encargado/encargado.component';
 import { ADMIN_ROUTES } from './components/admin/admin/admin.routes';
 import { ENCARGADO_ROUTES } from './components/encargado/encargado/encargado.routes';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  {path:'landing', component: PlataformaComponent},
-  {path:'admin', component: AdminComponent, children:ADMIN_ROUTES },
-  {path:'encargado', component: EncargadoComponent, children:ENCARGADO_ROUTES},
+  {path:'landing', component: PlataformaComponent,},
+  {path:'admin', component: AdminComponent, canActivate:[authGuard] ,children:ADMIN_ROUTES},
+  {path:'encargado', component: EncargadoComponent,canActivate:[authGuard], children:ENCARGADO_ROUTES},
   {path:'**', pathMatch:'full', redirectTo:'landing'},
     
 

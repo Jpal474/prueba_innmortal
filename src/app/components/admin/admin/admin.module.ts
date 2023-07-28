@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, provideRouter } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { HeaderadminComponent } from '../shared/headeradmin/headeradmin.component';
 import { SidebarComponent } from '../shared/sidebar/sidebar.component';
@@ -10,6 +10,7 @@ import { NuevoencargadoComponent } from '../encargados/nuevoencargado/nuevoencar
 import { ReactiveFormsModule } from '@angular/forms';
 import { SupermercadosComponent } from '../supermercado/supermercados/supermercados.component';
 import { DetallessupermercadoComponent } from '../supermercado/detallessupermercado/detallessupermercado.component';
+import { authGuard } from 'src/app/guards/auth.guard';
 
 
 @NgModule({
@@ -28,6 +29,6 @@ import { DetallessupermercadoComponent } from '../supermercado/detallessupermerc
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-  ]
+  ], 
 })
 export class AdminModule { }

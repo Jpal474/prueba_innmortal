@@ -8,6 +8,9 @@ import { AdminModule } from './components/admin/admin/admin.module';
 import { EncargadoModule } from './components/encargado/encargado/encargado.module';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { LandingModule } from './components/general/landing/landing.module';
+import { provideRouter } from '@angular/router';
+import { AdminComponent } from './components/admin/admin/admin.component';
+import { authGuard } from './guards/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,9 @@ import { LandingModule } from './components/general/landing/landing.module';
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true,
-  },],
+    
+  },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
