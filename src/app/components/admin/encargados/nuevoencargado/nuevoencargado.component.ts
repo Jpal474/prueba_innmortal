@@ -24,6 +24,7 @@ export class NuevoencargadoComponent {
     correo:'',
     telefono:'',
     contraseña:'',
+    tipo:'encargado'
 
   }
 
@@ -53,6 +54,7 @@ export class NuevoencargadoComponent {
       console.log('entra')
       const {confirmar_contraseña: _, ...nuevoEncargado}=this.encargado_formulario.value
       this.encargado=nuevoEncargado
+      this.encargado.tipo='encargado'
       console.log(this.encargado)
       this.adminEncargadoService.createEncargado(this.encargado)
       .subscribe(

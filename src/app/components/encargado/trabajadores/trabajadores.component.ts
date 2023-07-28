@@ -29,7 +29,11 @@ departamentos:Departamento[]=[]
                     for (let index = 0; index < this.departamentos.length; index++) {
                       this.encargadoService.getTrabajadores(this.departamentos[index].id!)
                       .subscribe((res:Trabajador[]) => {
-                            this.trabajadores[index]=res[index]
+                            for (let j=0; j<res.length;j++){
+                              this.trabajadores[j]=res[j]
+                            }
+                            
+                            console.log(this.trabajadores);
                       })//cierre del subcribe del trabajador
                       
                     }
@@ -38,13 +42,29 @@ departamentos:Departamento[]=[]
         
       }
       eliminarTrabajador(id: string): void {
-        this.encargadoService.deleteTrabajador(id)
-          .subscribe(
-            res => {
-              console.log(res);
-              this.getTrabajadores();
-            },
-            err => console.log(err)
-          )
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.encargadoService.deleteTrabajador(id)
+            .subscribe({
+              next: (v) => {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Registro Terminado',
+                  text: 'El nuevo Trabajador Ha Sido Registrado!',
+                })
+                window.location.reload()
+              },
+              error: (e) => console.error(e),
+          })
+          }
+        })
       }
 }

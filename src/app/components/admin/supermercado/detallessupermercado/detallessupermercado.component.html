@@ -66,11 +66,11 @@
                     <img src="../../../../../assets/recursos/super-admin/CARD ENCARGADO/avatar_encargado.svg" class="w-75 p-1">
                 </div>
                 <div class="col-4">
-                    <p>Nombre</p>
-                    <p>Fecha Nacimiento</p>
-                    <p>Género</p>
-                    <p>correo</p>
-                    <p>numero</p>
+                    <p>{{encargado.nombre}}</p>
+                    <p>{{encargado.fecha_nacimiento}}</p>
+                    <p>{{encargado.genero}}</p>
+                    <p>{{encargado.correo}}</p>
+                    <p>{{encargado.telefono}}</p>
                 </div>
 
             </div>
@@ -79,13 +79,13 @@
 </div>
 
 <div class="card text-center w-75 mt-5" style="margin-left: 10%;">
-    <div class="card-header" style="background-color: white; border: none;">
+    <div class="card-header" style="background-color: white; border: none; color:black;">
         <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item w-25" routerLinkActive="active">
-                <a class="nav-link" data-bs-toggle="tab" href="#departamentos">departamentos</a>
+                <a class="nav-link active" data-bs-toggle="tab" href="#departamentos">Departamentos</a>
             </li>
             <li class="nav-item w-25" routerLinkActive="active">
-                <a class="nav-link" data-bs-toggle="tab" href="#trabajadores">trabajadores</a>
+                <a class="nav-link" data-bs-toggle="tab" href="#trabajadores">Trabajadores</a>
             </li>
         </ul>
 
@@ -100,9 +100,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">Belleza y Perfumeria</th>
-                        <td>6 Trabajadores</td>
+                    <tr *ngFor="let departamento of departamentos; let i = index">
+                        <th scope="row">{{departamento.nombre}}</th>
+                        <td>{{trabajadores_num[i]}} Trabajadores</td>
                     </tr>
                     <tr>
 
@@ -140,12 +140,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">FV-12</th>
-                            <td>Eduardo</td>
-                            <td>Robles Ramos</td>
-                            <td>L M M J V</td>
-                            <td>4423897802</td>
+                        <tr *ngFor="let trabajador of trabajadores">
+                            <th scope="row">{{trabajador.id}}</th>
+                            <td>{{trabajador.nombre}}</td>
+                            <td>{{trabajador.apellidos}}</td>
+                            <td>{{trabajador.dias_laborales}}</td>
+                            <td>{{trabajador.telefono}}</td>
                         </tr>
                         <tr>
 

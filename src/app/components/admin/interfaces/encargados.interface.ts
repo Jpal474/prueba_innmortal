@@ -10,6 +10,7 @@ export interface Encargado{
     correo: string;
     telefono: string;
     contraseña: string;
+    tipo?:string;
     supermercado?:Supermercado;
 }
 

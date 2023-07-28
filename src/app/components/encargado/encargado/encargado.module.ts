@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, provideRouter } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EncargadoComponent } from './encargado.component';
 import { HeaderComponent } from '../shared/header/header.component';
@@ -11,6 +11,8 @@ import { NuevotrabajadorComponent } from '../nuevotrabajador/nuevotrabajador.com
 import { RegistrosupermercadoComponent } from '../registrosupermercado/registrosupermercado.component';
 import { TrabajadoresComponent } from '../trabajadores/trabajadores.component';
 import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
+import { CapitalizadoPipe } from 'src/app/pipes/capitalizado.pipe';
+import { encargadoSupermercadoGuard } from 'src/app/guards/encargado-supermercado.guard';
 
 
 
@@ -25,11 +27,19 @@ import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
     RegistrosupermercadoComponent,
     TrabajadoresComponent,
     PagenotfoundComponent,
+    CapitalizadoPipe,
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-  ]
+  ],
+  providers:[provideRouter([
+    {
+      path: 'encargado/registrar-supermercado',
+      component: RegistrosupermercadoComponent,
+      canActivate: [encargadoSupermercadoGuard],
+    }
+  ])]
 })
 export class EncargadoModule { }

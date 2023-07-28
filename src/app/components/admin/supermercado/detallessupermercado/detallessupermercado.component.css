@@ -7,6 +7,11 @@
     color: white
 }
 
+.card-header .active {
+    background-color: #41733d;
+    color: white
+}
+
 .th {
     background-color: #33383e;
     color: white;

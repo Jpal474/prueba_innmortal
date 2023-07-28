@@ -22,7 +22,7 @@
                 <tbody>
                     <tr *ngFor="let trabajador of trabajadores">
                         <th scope="row">{{trabajador.id}}</th>
-                        <td>''</td>
+                        <td>{{trabajador.departamento?.nombre | uppercase}}</td>
                         <td>{{trabajador.nombre}}</td>
                         <td>{{trabajador.apellidos}}</td>
                         <td>{{trabajador.dias_laborales}}</td>

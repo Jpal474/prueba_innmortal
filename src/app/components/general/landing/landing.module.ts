@@ -7,7 +7,6 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { LoginComponent } from '../login/login/login.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CapitalizadoPipe } from 'src/app/pipes/capitalizado.pipe';
 
 
 
@@ -18,7 +17,6 @@ import { CapitalizadoPipe } from 'src/app/pipes/capitalizado.pipe';
     FooterComponent,
     NavbarComponent,
     LoginComponent,
-    CapitalizadoPipe,
   ],
   imports: [
     CommonModule,

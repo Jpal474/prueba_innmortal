@@ -5,11 +5,12 @@ import { TrabajadoresComponent } from '../trabajadores/trabajadores.component';
 import { NuevotrabajadorComponent } from '../nuevotrabajador/nuevotrabajador.component';
 import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 import { EditartrabajadorComponent } from '../editartrabajador/editartrabajador.component';
+import { encargadoSupermercadoGuard } from 'src/app/guards/encargado-supermercado.guard';
 
 
 
 export const ENCARGADO_ROUTES: Routes = [
-    { path: 'registrar-supermercado', component:RegistrosupermercadoComponent, /*canActivate:*/ },
+    { path: 'registrar-supermercado', component:RegistrosupermercadoComponent, canActivate:[encargadoSupermercadoGuard] },
     { path: 'departamentos', component:DepartamentosComponent },
     { path: 'trabajadores', component:TrabajadoresComponent },
     { path: 'registrar-trabajador', component:NuevotrabajadorComponent },

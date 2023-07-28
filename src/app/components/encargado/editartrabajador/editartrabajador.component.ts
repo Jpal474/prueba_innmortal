@@ -4,6 +4,8 @@ import { EncargadoService } from 'src/app/services/encargado.service';
 import { Trabajador } from '../../admin/interfaces/trabajador.interface';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
+import { TrabajadorDepartamento } from 'src/app/interfaces/trabajador-departamento.interface';
+import { Departamento } from 'src/app/interfaces/departamento.interface';
 
 @Component({
   selector: 'app-editartrabajador',
@@ -13,13 +15,16 @@ import { ActivatedRoute } from '@angular/router';
 export class EditartrabajadorComponent implements OnInit{
 
   trabajador_formulario!: FormGroup
-  trabajador:Trabajador={
+  trabajador:TrabajadorDepartamento={
     id:'',
     nombre:'',
     apellidos:'',
     dias_laborales:'',
     telefono:'',
-    // departamento:'',
+    departamento:{
+      id:'',
+      nombre:''
+    },
   }
   constructor(private fb:FormBuilder,
     private encargadoService:EncargadoService,
@@ -32,14 +37,14 @@ ngOnInit(): void {
   if(params){
     this.encargadoService.getTrabajador(params['id'])
     .subscribe((res:Trabajador)=>{
-      console.log(res)
+      // console.log(res)
       this.trabajador_formulario.patchValue({
         id:res.id,
     nombre:res.nombre,
     apellidos:res.apellidos,
     dias_laborales:res.dias_laborales,
     telefono:res.telefono,
-
+    departamento:res.departamento?.nombre
       })
     })
   }
@@ -51,7 +56,7 @@ ngOnInit(): void {
     nombre:['', Validators.required],
     apellidos:['', Validators.required],
     dias_laborales:['', Validators.required],
-    telefono:['', [Validators.required,Validators.pattern('^\(\d{3}\)\s-\s\d{3}\s-\s\d{4}$')]],
+    telefono:['', Validators.required,],
     departamento:['', Validators.required],
   
   
@@ -62,18 +67,23 @@ ngOnInit(): void {
     const params = this.activadedRoute.snapshot.params;
     this.trabajador=this.trabajador_formulario.value;
     console.log(this.trabajador)
-    this.encargadoService.updateTrabajador(params['id'],this.trabajador)
-    .subscribe(
-      res=>{
-        Swal.fire({
-          icon: 'success',
-          title: 'Registro Terminado',
-          text: 'El nuevo Trabajador Ha Sido Registrado!',
-          footer: '<a href="">Why do I have this issue?</a>'
-        })
-      },
-      err=>console.log(err)
-    )
+    this.encargadoService.getDepartamentoByNombre(this.trabajador_formulario.value.departamento)
+    .subscribe((res:Departamento) => {
+      this.trabajador.departamento=res
+      this.encargadoService.updateTrabajador(params['id'],this.trabajador)
+      .subscribe({
+        next: (v) => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro Terminado',
+            text: 'El nuevo Trabajador Ha Sido Registrado!',
+            footer: '<a href="">Why do I have this issue?</a>'
+          })
+        },
+        error: (e) => console.error(e),
+    })
+      
+    })
   }
   else{
     return Object.values( this.trabajador_formulario.controls ).forEach( control => {

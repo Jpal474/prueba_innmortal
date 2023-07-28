@@ -23,7 +23,12 @@ export class AdminService {
       return this.httpClient.get <Encargado>(`${this.BASE_URL}/auth/${id}`) 
   }
 
+  getEncargadoBySuperId(id:string): Observable<Encargado>{
+    return this.httpClient.get<Encargado>(`${this.BASE_URL}/auth/encargado/${id}`)
+  }
+
   createEncargado(encargado:Encargado):Observable<Encargado>{
+    console.log(`Encargado ${encargado}`)
     return this.httpClient.post<Encargado>(`${this.BASE_URL}/auth`, encargado )
   }
 

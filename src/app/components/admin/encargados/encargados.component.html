@@ -26,7 +26,7 @@
                         <td>{{encargado.genero}}</td>
                         <td>{{encargado.correo}}</td>
                         <td>{{encargado.telefono}}</td>
-                        <td>Mefcado1</td>
+                        <td>{{encargado.supermercado?.nombre}}</td>
                         <td>
                             <a class="btn button text-white" [routerLink]="['/admin/editar',encargado.id]">Editar</a>
                         </td>
