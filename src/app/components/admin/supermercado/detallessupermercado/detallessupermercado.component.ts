@@ -97,7 +97,7 @@ getTrabajadores(dptos:Departamento[]){
       next:(res:Trabajador[]) => {
         this.trabajadores_num[i]=res.length
         for (let j=0; j<res.length;j++){
-          this.trabajadores[j]=res[j]
+          this.trabajadores.push(res[j])
         }
         
         console.log(`Trabajadores ${this.trabajadores}`);

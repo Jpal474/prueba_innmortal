@@ -51,7 +51,7 @@ constructor(
       inputPlaceholder: 'Ingrese Nombre del Departamento'
     })
     
-    if (departamento) {
+    if (departamento && localStorage.getItem('id_supermercado')!==null) {
       this.adminService.getSupermercado(localStorage.getItem('id_supermercado')!)
       .subscribe((res:Supermercado) => {
         console.log(`Respuesta Res ${res.id}`)
@@ -63,9 +63,18 @@ constructor(
               .subscribe((res:Departamento)=>{
                 Swal.fire(`Departamento Registrado: ${departamento}`)
               })
+              window.location.reload()
     
     
       });
+      
+    }
+    if(departamento && localStorage.getItem('id_supermercado') === null){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No es posible dar de alta un departamento hasta registrar un supermercado',
+      })
     }
   
   }

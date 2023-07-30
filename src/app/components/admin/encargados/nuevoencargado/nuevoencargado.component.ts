@@ -91,7 +91,7 @@ export class NuevoencargadoComponent {
   toggleFieldTextType2() {
     this.fieldTextType2 = !this.fieldTextType2;
   }
-  get f() { return this.encargado_formulario.controls; }
+  
   get nombreNoValido(){
     return this.encargado_formulario.get('nombre')?.invalid && this.encargado_formulario.get('nombre')?.touched
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin-encargado.service';
 import { EncargadoGenero, Encargado } from '../../interfaces/encargados.interface';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UpdateEncargado } from '../../interfaces/update-encargado.interface';
 @Component({
@@ -46,7 +46,6 @@ ngOnInit(): void {
         genero:res.genero,
         correo:res.correo,
         telefono:res.telefono,
-        contraseña:res.contraseña
 
       })
 
@@ -57,13 +56,13 @@ ngOnInit(): void {
 
 crearFormulario(){
   this.encargado_formulario=this.fb.group({
-    nombre:[''],
-    apellido_paterno:[''],
-    apellido_materno:[''],
-    fecha_nacimiento:[''],
-    genero:[''],
-    correo:[''],
-    telefono:[''],
+    nombre:['', Validators.required],
+    apellido_paterno:['', Validators.required],
+    apellido_materno:['', Validators.required],
+    fecha_nacimiento:['', Validators.required],
+    genero:['', Validators.required],
+    correo:['', Validators.required],
+    telefono:['', Validators.required],
     contraseña:[''],
     confirmar_contraseña:[''],
   
@@ -91,7 +90,7 @@ crearFormulario(){
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Guardar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.adminEncargadoService.updateEncargado(params['id'],this.encargado)
@@ -107,4 +106,39 @@ crearFormulario(){
     
 
 }
+
+
+get nombreNoValido(){
+  return this.encargado_formulario.get('nombre')?.invalid && this.encargado_formulario.get('nombre')?.touched
+}
+get apellidopaternoNoValido(){
+  return this.encargado_formulario.get('apellido_paterno')?.invalid && this.encargado_formulario.get('apellido_paterno')?.touched
+}
+get apellidomaternoNoValido(){
+  return this.encargado_formulario.get('apellido_materno')?.invalid && this.encargado_formulario.get('apellido_materno')?.touched
+}
+get fechaNoValido(){
+  return this.encargado_formulario.get('fecha_nacimiento')?.invalid && this.encargado_formulario.get('fecha_nacimiento')?.touched
+}
+get generoNoValido(){
+  return this.encargado_formulario.get('fecha_nacimiento')?.invalid && this.encargado_formulario.get('fecha_nacimiento')?.touched
+}
+get correoNoValido(){
+  return this.encargado_formulario.get('fecha_nacimiento')?.invalid && this.encargado_formulario.get('fecha_nacimiento')?.touched
+}
+get telefonoNoValido(){
+  return this.encargado_formulario.get('telefono')?.invalid && this.encargado_formulario.get('telefono')?.touched
+}
+
+get confirmarContraseniaNoValida(){
+
+  const pass1 = this.encargado_formulario.get('contraseña')?.value;
+  const pass2 = this.encargado_formulario.get('confirmar_contraseña')?.value;
+
+  return ( pass1 === pass2 
+  ) ? false : true;  
+}
+
+
+
 }

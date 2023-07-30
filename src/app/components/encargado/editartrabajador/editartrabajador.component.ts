@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncargadoService } from 'src/app/services/encargado.service';
 import { Trabajador } from '../../admin/interfaces/trabajador.interface';
 import Swal from 'sweetalert2';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TrabajadorDepartamento } from 'src/app/interfaces/trabajador-departamento.interface';
 import { Departamento } from 'src/app/interfaces/departamento.interface';
 
@@ -26,9 +26,12 @@ export class EditartrabajadorComponent implements OnInit{
       nombre:''
     },
   }
-  constructor(private fb:FormBuilder,
+  constructor(
+    private fb:FormBuilder,
     private encargadoService:EncargadoService,
-    private activadedRoute:ActivatedRoute
+    private activadedRoute:ActivatedRoute,
+    private router:Router,
+
     ){
     this.crearFormulario()
   }
@@ -75,15 +78,15 @@ ngOnInit(): void {
         next: (v) => {
           Swal.fire({
             icon: 'success',
-            title: 'Registro Terminado',
-            text: 'El nuevo Trabajador Ha Sido Registrado!',
-            footer: '<a href="">Why do I have this issue?</a>'
+            title: 'Edición Terminada',
+            text: 'El nuevo Trabajador Ha Sido Editado Con Éxito!',
           })
         },
         error: (e) => console.error(e),
     })
       
     })
+    this.router.navigate(['/encargado/trabajadores'])
   }
   else{
     return Object.values( this.trabajador_formulario.controls ).forEach( control => {

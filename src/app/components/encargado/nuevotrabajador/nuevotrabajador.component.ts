@@ -7,6 +7,7 @@ import { Departamento } from '../../admin/interfaces/departamento.interface';
 import { TrabajadorDepartamento } from '../../admin/interfaces/trabajador-departamento.interface';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin-encargado.service';
+import { Encargado } from 'src/app/interfaces/encargados.interface';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { AdminService } from 'src/app/services/admin-encargado.service';
 export class NuevotrabajadorComponent {
   trabajador_formulario!: FormGroup
   trabajador_departamento_formulario!:FormGroup 
+  departamentos!:Departamento[]
   trabajador_departamento:TrabajadorDepartamento={
       id:'',
       nombre:'',
@@ -33,7 +35,8 @@ export class NuevotrabajadorComponent {
     private adminService:AdminService,
     private router:Router,
     ){
-    this.crearFormulario()
+    this.crearFormulario();
+    this.getDepartamentos();
   }
   crearFormulario(){
   this.trabajador_formulario=this.fb.group({
@@ -49,6 +52,18 @@ this.trabajador_departamento_formulario=this.fb.group({
 })
   
   }
+
+getDepartamentos(){
+  this.encargadoService.getDepartamentosBySuperId(localStorage.getItem('id_supermercado')!)
+  .subscribe({
+    next: (res:Departamento[]) => {
+      this.departamentos=res
+      console.log(`Encargado ${this.departamentos}`)
+    }
+  })
+}
+
+
   guardarTrabajador(){
     if(!this.trabajador_formulario.invalid){
     this.trabajador_departamento=this.trabajador_formulario.value;
@@ -64,7 +79,8 @@ this.trabajador_departamento_formulario=this.fb.group({
               title: 'Registro Terminado',
               text: 'El nuevo Trabajador Ha Sido Registrado!',
                 })
-              },
+              }
+              ,
               err=>console.log(err)
         )
     })

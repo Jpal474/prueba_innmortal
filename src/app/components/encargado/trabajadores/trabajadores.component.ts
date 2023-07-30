@@ -30,7 +30,7 @@ departamentos:Departamento[]=[]
                       this.encargadoService.getTrabajadores(this.departamentos[index].id!)
                       .subscribe((res:Trabajador[]) => {
                             for (let j=0; j<res.length;j++){
-                              this.trabajadores[j]=res[j]
+                              this.trabajadores.push(res[j])
                             }
                             
                             console.log(this.trabajadores);

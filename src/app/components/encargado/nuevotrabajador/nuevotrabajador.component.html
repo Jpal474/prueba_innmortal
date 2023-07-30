@@ -1,18 +1,16 @@
 <h1 class="text-center mt-5">Registro de Trabajadores</h1>
-<a style="color:#0055aa "> <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" style="width: 30px; height: 30px;" class="float-start ms-5"> Regresar </a>
+<a style="color:#0055aa" [routerLink]="['/encargado/trabajadores']"> <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" style="width: 30px; height: 30px;" class="float-start ms-5"> Regresar </a>
 <div class="container">
     <p>Los campos con (*) con son obligatorios</p>
     <div class="container-dep">
         <form autocomplete="off" [formGroup]="trabajador_departamento_formulario" class="mt-2">
             <div class="input-group mb-3 mt-5">
-                <input type="text" class="form-control" formControlName="departamento">
+                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+                <select class="form-select" aria-label="Default select example" formControlName="departamento" formControlName="departamento" [class.is-invalid]="departamentoNoValido">
+                    <option disabled selected>-Elija Un Departamento-</option>
+                    <option *ngFor="let departamento of departamentos">{{departamento.nombre | uppercase}}</option>
+                  </select>
                 <label>Departamento<span>*</span></label>
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="max-width: 150px; min-width: 30px;">Dropdown</button>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
             </div>
             <small *ngIf="departamentoNoValido" class="text-danger"> El campo no puede estar vacio</small>
 
@@ -66,9 +64,15 @@
                     <div class="form-group row justify-content-center mt-5">
                         <div class="col-6 col-sm-3">
                             <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="dias_laborales" [class.is-invalid]="diasNoValidos">
+                                <select class="select" multiple formControlName="dias_laborales" [class.is-invalid]="apellidosNoValido">
+                                    <option value="L">Lunes</option>
+                                    <option value="M">Martes</option>
+                                    <option value="Mi">Miercoles</option>
+                                    <option value="J">Jueves</option>
+                                    <option value="V">Viernes</option>
+                                  </select>
+                                <label class="form-label select-label">Días Laborales<span>*</span></label>
 
-                                <label>Días Laborales<span>*</span></label>
                             </div>
                             <small *ngIf="diasNoValidos" class="text-danger"> El campo no puede estar vacio</small>
 
@@ -78,7 +82,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control shadow-none" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
 
-                                <label>Telefono</label>
+                                <label>Telefono<span>*</span></label>
                             </div>
                             <small *ngIf="telefonoNoValido" class="text-danger"> El campo no puede estar vacio</small>
 

@@ -17,7 +17,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let departamento of departamentos">
-                        <th scope="row">{{departamento.nombre }}</th>
+                        <th scope="row">{{departamento.nombre | uppercase }}</th>
                         <td>
                             <a type="button" class="btn button text-white" (click)="eliminarDepartamento('1')">Eliminar</a>
                         </td>
