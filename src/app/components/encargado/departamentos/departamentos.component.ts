@@ -53,18 +53,20 @@ constructor(
     })
     
     if (departamento && localStorage.getItem('id_supermercado')!==null) {
+      console.log(`Departamento Registrado: ${departamento}`)
       this.adminService.getSupermercado(localStorage.getItem('id_supermercado')!)
       .subscribe((res:Supermercado) => {
         console.log(`Respuesta Res ${res.id}`)
         this.departamento_supermercado.supermercado=res;
-        this.departamento_supermercado.nombre=departamento;
+        this.departamento_supermercado.nombre=departamento.toLowerCase();
       console.log(`Departamento: ${this.departamento_supermercado.nombre}`)
       console.log(`Supermercado: ${this.departamento_supermercado.supermercado}`)
       this.encargadoService.createDepartamento(this.departamento_supermercado)
               .subscribe((res:Departamento)=>{
                 Swal.fire(`Departamento Registrado: ${departamento}`)
+                window.location.reload()
               })
-              window.location.reload()
+              
     
     
       });

@@ -79,7 +79,7 @@
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                <input [type]="fieldTextType2 ? 'text' : 'password'" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" [class.is-invalid]="confirmarContraseniaNoValida">
+                                <input [type]="fieldTextType2 ? 'text' : 'password'" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="confirmar_contraseña" [class.is-invalid]="confirmarContraseniaNoValida">
                                 <span class="input-group-text" (click)="toggleFieldTextType2()"><img
                                      [src]="fieldTextType2? '../../../../../assets/recursos/super-admin/ICONOS GENERALES/ocultar.svg' : '../../../../../assets/recursos/super-admin/ICONOS GENERALES/mostrar.svg' "
                                      width="20px" 
