@@ -85,6 +85,7 @@ this.encargadoService.getDepartamentosBySuperId(params['id'])
 .subscribe({
   next: (res:Departamento[]) => {
     this.departamentos=res;
+    console.log(`Departamentos ${this.departamentos[5].nombre}`)
     this.getTrabajadores(this.departamentos)
   },
   error: (e) => console.error(e),

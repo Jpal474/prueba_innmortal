@@ -59,6 +59,9 @@ span {
         pointer-events: none;
         transition: .5s;
     }
+    .input-group input {
+        font-size: 10px;
+    }
     span {
         color: red;
     }

@@ -18,7 +18,7 @@ import { Encargado } from 'src/app/interfaces/encargados.interface';
 export class NuevotrabajadorComponent {
   trabajador_formulario!: FormGroup
   trabajador_departamento_formulario!:FormGroup 
-  departamentos!:Departamento[]
+  departamentos:Departamento[]=[]
   trabajador_departamento:TrabajadorDepartamento={
       id:'',
       nombre:'',
@@ -58,7 +58,7 @@ getDepartamentos(){
   .subscribe({
     next: (res:Departamento[]) => {
       this.departamentos=res
-      console.log(`Encargado ${this.departamentos}`)
+      console.log(`Departamentos ${this.departamentos}`)
     }
   })
 }
@@ -68,6 +68,7 @@ getDepartamentos(){
     if(!this.trabajador_formulario.invalid){
     this.trabajador_departamento=this.trabajador_formulario.value;
     console.log(this.trabajador_departamento_formulario.value.departamento)
+    if(this.departamentos !== null){
       this.encargadoService.getDepartamentoByNombre(this.trabajador_departamento_formulario.value.departamento.toLowerCase())
         .subscribe((res:Departamento) => {
           console.log(`departamento ${res}`)
@@ -79,11 +80,20 @@ getDepartamentos(){
               title: 'Registro Terminado',
               text: 'El nuevo Trabajador Ha Sido Registrado!',
                 })
+                this.router.navigate([`/encargado/trabajadores`])
               }
               ,
               err=>console.log(err)
         )
     })
+  }
+  else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'No Es Posible Dar de Alta Un Trabajador Sin Un Departamento!',
+    })
+  }
     
     this.router.navigate([`/encargado/trabajadores`])
 

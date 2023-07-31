@@ -41,7 +41,7 @@ export class EncargadoService {
     return this.httpClient.post<Departamento>(`${this.BASE_URL}/departamentos`, departamento )
   }
 
-  deleteDepartamento(id:string):Observable<Departamento>{
+  deleteDepartamento(id : string | undefined):Observable<Departamento>{
     return this.httpClient.delete<Departamento>(`${this.BASE_URL}/departamentos/${id}`);
   }
 

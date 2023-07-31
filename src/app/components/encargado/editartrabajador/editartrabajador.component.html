@@ -1,18 +1,16 @@
 <h1 class="text-center mt-5">Edición de Trabajadores</h1>
-<a style="color:#0055aa "> <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" style="width: 30px; height: 30px;" class="float-start ms-5"> Regresar </a>
+<a style="color:#0055aa " [routerLink]="['/encargado/trabajadores']"> <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" style="width: 30px; height: 30px;" class="float-start ms-5"> Regresar </a>
 <div class="container">
     <div class="row justify-content-start mt-5">
         <div class="col-6">
             <form autocomplete="off" [formGroup]="trabajador_formulario" class="mt-2">
-                <div class="input-group mb-3 mt-5" style="max-width: 350px;">
-                    <input type="text" class="form-control" formControlName="departamento" [class.is-invalid]="departamentoNoValido">
+                <div class="input-group mb-3 mt-5">
+                    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+                    <select class="form-select" aria-label="Default select example" formControlName="departamento" [class.is-invalid]="departamentoNoValido" value="{{trabajador.departamento.nombre}}">
+                        <option disabled selected>-Elija Un Departamento-</option>
+                        <option *ngFor="let departamento of departamentos">{{departamento.nombre | uppercase}}</option>
+                      </select>
                     <label>Departamento<span>*</span></label>
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
                 </div>
                 <small *ngIf="departamentoNoValido" class="text-danger"> El campo no puede estar vacio</small>
 
@@ -23,7 +21,7 @@
 
 <!--Card Para Edicion -->
 <div class="container align-items-center">
-    <div class="card" style="max-width: 90%;">
+    <div class="card">
         <div class="card-header text-center">
             Datos del Trabajador
             <hr>

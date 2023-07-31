@@ -101,6 +101,7 @@ crearFormulario(){
           'success'
         )
       })
+      this.router.navigate([`/admin/inicio`]);
       }
     })
     

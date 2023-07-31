@@ -1,3 +1,7 @@
+.card {
+    width: 60vw;
+}
+
 span {
     color: red;
 }
@@ -26,4 +30,16 @@ p {
     position: absolute;
     left: 20px;
     top: 10px;
+}
+
+@media screen and (max-width:550px) {
+    .card {
+        width: 60vw;
+    }
+    .input-group {
+        font-size: 10px;
+    }
+    .input-group input {
+        margin-bottom: 10px;
+    }
 }

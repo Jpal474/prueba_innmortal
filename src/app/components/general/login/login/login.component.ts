@@ -13,6 +13,7 @@ import {Encargado,EncargadoGenero} from 'src/app/interfaces/encargados.interface
 import { Usuario } from 'src/app/interfaces/user.interface';
 import { EncargadoService } from 'src/app/services/encargado.service';
 import { AdminService } from 'src/app/services/admin-encargado.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -62,7 +63,15 @@ export class LoginComponent {
         localStorage.setItem('usuario', usuario.correo)
         localStorage.setItem('id_usuario', usuario.id)
         localStorage.setItem('tipo', usuario.tipo)
-
+        Swal.fire({
+          title: `Bienvenido(a) ${usuario.correo}`,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
         if(usuario.tipo==='encargado'){//si mi usuario es de tipo Encargado
          this.adminService.getEncargadoById(usuario.id!) //lo busca en la bd
         .subscribe((res:Encargado)=>{
@@ -82,14 +91,14 @@ export class LoginComponent {
 
       },
       (err:any) => {
-        const { error } = err;
-        const { message, statusCode } = error;
-        if (statusCode === 404) {
-          this.usuarioNotFound = message;
-        } else if (statusCode === 403) {
-          this.passwordInvalid = message;
-        }
-        console.log(statusCode, message);
+       
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err}`,
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+        
       }
     );
   }

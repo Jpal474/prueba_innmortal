@@ -1,10 +1,10 @@
 .card {
-    width: 80vh;
+    width: 40vw;
 }
 
 .card-header {
     background-color: #343a40;
-    color: white
+    color: white;
 }
 
 .card-header .active {
@@ -24,4 +24,25 @@
 
 .smaller-response {
     font-size: 80%;
+}
+
+@media screen and (max-width:800px) {
+    .card {
+        width: 35vw;
+        height: 85vh;
+    }
+    .smaller {
+        font-size: 7px;
+        font-weight: bold;
+    }
+    .smaller-response {
+        font-size: 8px;
+    }
+    .row img {
+        position: absolute;
+        top: 30%;
+        left: -10%;
+        width: 50px;
+        height: 50px;
+    }
 }

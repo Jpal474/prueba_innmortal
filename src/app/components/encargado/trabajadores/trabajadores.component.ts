@@ -11,6 +11,7 @@ import { Departamento } from '../../admin/interfaces/departamento.interface';
   styleUrls: ['./trabajadores.component.css']
 })
 export class TrabajadoresComponent {
+p:number=1;
 trabajadores:Trabajador[]=[]
 departamentos:Departamento[]=[]
   constructor(private encargadoService:EncargadoService){

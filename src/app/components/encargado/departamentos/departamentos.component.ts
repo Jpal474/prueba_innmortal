@@ -64,7 +64,9 @@ constructor(
       this.encargadoService.createDepartamento(this.departamento_supermercado)
               .subscribe((res:Departamento)=>{
                 Swal.fire(`Departamento Registrado: ${departamento}`)
-                window.location.reload()
+                setTimeout(function(){
+                  window.location.reload();
+               }, 2000);
               })
               
     
@@ -81,7 +83,7 @@ constructor(
     }
   
   }
-  eliminarDepartamento(departamentoid:string){
+  eliminarDepartamento(departamentoid : string | undefined){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -107,6 +109,9 @@ constructor(
             'Your file has been deleted.',
             'success'
           )
+          setTimeout(function(){
+            window.location.reload();
+         }, 2000);
         })
        
       } else if (
@@ -114,8 +119,8 @@ constructor(
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
+          'Cancelado',
+          'El Departamento No Ha Sido Borrado!',
           'error'
         )
       }

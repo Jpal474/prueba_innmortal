@@ -7,6 +7,7 @@ main {
 
 app-sidebarencargado {
     position: absolute;
+    top: 10px;
     left: 0rem;
     width: 60px;
     height: calc(109vh - 2rem);
@@ -32,4 +33,14 @@ app-sidebarencargado {
 .display-area-shrink {
     width: calc(100%-250px);
     left: 250px;
+}
+
+@media screen and (max-width:450px) {
+    app-sidebarencargado {
+        top: 50px;
+        height: 100vh;
+    }
+    app-header {
+        width: 200vw;
+    }
 }

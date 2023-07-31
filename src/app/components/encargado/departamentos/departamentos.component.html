@@ -19,7 +19,7 @@
                     <tr *ngFor="let departamento of departamentos | paginate: { itemsPerPage: 5, currentPage: p }">
                         <th scope="row">{{departamento.nombre | uppercase }}</th>
                         <td>
-                            <a type="button" class="btn button text-white" (click)="eliminarDepartamento('1')">Eliminar</a>
+                            <a type="button" class="btn button text-white" (click)="eliminarDepartamento(departamento.id)">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>

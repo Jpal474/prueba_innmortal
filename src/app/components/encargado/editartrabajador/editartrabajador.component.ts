@@ -15,6 +15,7 @@ import { Departamento } from 'src/app/interfaces/departamento.interface';
 export class EditartrabajadorComponent implements OnInit{
 
   trabajador_formulario!: FormGroup
+  departamentos!:Departamento[]
   trabajador:TrabajadorDepartamento={
     id:'',
     nombre:'',
@@ -34,6 +35,7 @@ export class EditartrabajadorComponent implements OnInit{
 
     ){
     this.crearFormulario()
+    this.getDepartamentos();
   }
 ngOnInit(): void {
   const params = this.activadedRoute.snapshot.params;
@@ -65,12 +67,25 @@ ngOnInit(): void {
   
   })
   }
+
+  getDepartamentos(){
+    this.encargadoService.getDepartamentosBySuperId(localStorage.getItem('id_supermercado')!)
+    .subscribe({
+      next: (res:Departamento[]) => {
+        this.departamentos=res
+        console.log(`Encargado ${this.departamentos}`)
+      }
+    })
+  }
+
+
+
   actualizarTrabajador(){
     if(!this.trabajador_formulario.invalid){
     const params = this.activadedRoute.snapshot.params;
     this.trabajador=this.trabajador_formulario.value;
     console.log(this.trabajador)
-    this.encargadoService.getDepartamentoByNombre(this.trabajador_formulario.value.departamento)
+    this.encargadoService.getDepartamentoByNombre(this.trabajador_formulario.value.departamento.toLowerCase())
     .subscribe((res:Departamento) => {
       this.trabajador.departamento=res
       this.encargadoService.updateTrabajador(params['id'],this.trabajador)

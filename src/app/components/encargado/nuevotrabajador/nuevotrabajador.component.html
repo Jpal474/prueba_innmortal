@@ -6,7 +6,7 @@
         <form autocomplete="off" [formGroup]="trabajador_departamento_formulario" class="mt-2">
             <div class="input-group mb-3 mt-5">
                 <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-                <select class="form-select" aria-label="Default select example" formControlName="departamento" formControlName="departamento" [class.is-invalid]="departamentoNoValido">
+                <select class="form-select" aria-label="Default select example" formControlName="departamento" [class.is-invalid]="departamentoNoValido">
                     <option disabled selected>-Elija Un Departamento-</option>
                     <option *ngFor="let departamento of departamentos">{{departamento.nombre | uppercase}}</option>
                   </select>
@@ -20,7 +20,7 @@
 
 <!--Card Para Registro -->
 <div class="container align-items-center">
-    <div class="card" style="max-width: 90%;">
+    <div class="card">
         <div class="card-header text-center">
             Datos del Trabajador
             <hr>
