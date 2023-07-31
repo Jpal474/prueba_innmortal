@@ -13,6 +13,7 @@ import { TrabajadoresComponent } from '../trabajadores/trabajadores.component';
 import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 import { CapitalizadoPipe } from 'src/app/pipes/capitalizado.pipe';
 import { encargadoSupermercadoGuard } from 'src/app/guards/encargado-supermercado.guard';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -33,6 +34,7 @@ import { encargadoSupermercadoGuard } from 'src/app/guards/encargado-supermercad
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers:[provideRouter([
     {

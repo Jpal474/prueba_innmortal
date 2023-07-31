@@ -13,6 +13,8 @@ import { Encargado, EncargadoGenero } from 'src/app/interfaces/encargados.interf
   styleUrls: ['./detallessupermercado.component.css']
 })
 export class DetallessupermercadoComponent implements OnInit{
+p: number = 1;
+p2: number = 1;
 supermercado:Supermercado={
   nombre: '',
   calle: '',

@@ -12,6 +12,7 @@ import { DepartamentoSupermercado } from '../../admin/interfaces/departamento-su
   styleUrls: ['./departamentos.component.css']
 })
 export class DepartamentosComponent implements OnInit{
+  p: number = 1;
   departamento_supermercado:DepartamentoSupermercado={
     nombre:'',
     supermercado:{id:'',

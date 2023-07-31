@@ -8,6 +8,7 @@ import { Supermercado } from '../../interfaces/supermercado.interface';
   styleUrls: ['./supermercados.component.css']
 })
 export class SupermercadosComponent implements OnInit {
+  p: number = 1;
   supermercados:Supermercado[]=[]
   constructor(private adminService:AdminService){}
 

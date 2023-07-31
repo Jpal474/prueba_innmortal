@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let encargado of encargados">
+                    <tr *ngFor="let encargado of encargados | paginate: { itemsPerPage: 5, currentPage: p }">
                         <th scope="row">{{encargado.nombre}} {{encargado.apellido_paterno}} {{encargado.apellido_materno}}
                         </th>
                         <td>{{encargado.fecha_nacimiento}}</td>
@@ -37,21 +37,6 @@
         </div>
     </div>
 </div>
-
-<nav aria-label="Page navigation example align-items-center">
-    <ul class=" pagination justify-content-center ">
-        <li class="page-item ">
-            <a class="page-link " href="# " aria-label="Previous ">
-                <span aria-hidden="true ">&laquo;</span>
-            </a>
-        </li>
-        <li class="page-item "><a class="page-link " href="# ">1</a></li>
-        <li class="page-item "><a class="page-link " href="# ">2</a></li>
-        <li class="page-item "><a class="page-link " href="# ">3</a></li>
-        <li class="page-item ">
-            <a class="page-link " href="# " aria-label="Next ">
-                <span aria-hidden="true ">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+<div class="d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>

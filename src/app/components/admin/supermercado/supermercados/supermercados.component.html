@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let supermercado of supermercados">
+            <tr *ngFor="let supermercado of supermercados | paginate: { itemsPerPage: 5, currentPage: p }">
                 <th scope="row">{{supermercado.razon_social}}</th>
                 <td>{{supermercado.estado}} </td>
                 <td>{{supermercado.correo}}</td>
@@ -23,20 +23,7 @@
         </tbody>
     </table>
 </div>
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" width="10px" height="10px">
-            </a>
-        </li>
-        <li class="page-item"><a class="page-link active" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+
+<div class="d-flex justify-content-center">
+    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</div>

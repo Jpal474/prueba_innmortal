@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SupermercadosComponent } from '../supermercado/supermercados/supermercados.component';
 import { DetallessupermercadoComponent } from '../supermercado/detallessupermercado/detallessupermercado.component';
 import { authGuard } from 'src/app/guards/auth.guard';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { authGuard } from 'src/app/guards/auth.guard';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ], 
 })
 export class AdminModule { }

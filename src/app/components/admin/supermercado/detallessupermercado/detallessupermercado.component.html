@@ -100,31 +100,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let departamento of departamentos; let i = index">
-                        <th scope="row">{{departamento.nombre}}</th>
+                    <tr *ngFor="let departamento of departamentos | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                        <th scope="row">{{departamento.nombre | uppercase}}</th>
                         <td>{{trabajadores_num[i]}} Trabajadores</td>
                     </tr>
                     <tr>
 
 
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="d-flex justify-content-center">
+                <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </div>
         </div>
         <div class="tab-pane" id="trabajadores">
             <div class="table-responsive">
@@ -140,7 +126,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let trabajador of trabajadores">
+                        <tr *ngFor="let trabajador of trabajadores | paginate: { itemsPerPage: 5, currentPage: p }">
                             <th scope="row">{{trabajador.id}}</th>
                             <td>{{trabajador.nombre}}</td>
                             <td>{{trabajador.apellidos}}</td>
@@ -148,28 +134,11 @@
                             <td>{{trabajador.telefono}}</td>
                         </tr>
                         <tr>
-
-
                 </table>
             </div>
-
-            <nav aria-label="Page navigation example align-items-center">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="d-flex justify-content-center">
+                <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            </div>
         </div>
     </div>
 </div>

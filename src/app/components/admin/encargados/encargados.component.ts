@@ -9,7 +9,7 @@ import { AdminService } from 'src/app/services/admin-encargado.service';
   styleUrls: ['./encargados.component.css']
 })
 export class EncargadosComponent implements OnInit  {
-
+  p: number = 1;
   encargados:Encargado[]=[];
   sideNavStatus:boolean=false;
   constructor(private adminService:AdminService){ }
