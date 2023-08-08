@@ -44,13 +44,13 @@ departamentos:Departamento[]=[]
       }
       eliminarTrabajador(id: string): void {
         Swal.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          title: '¿Estás seguro?',
+          text: "No podrás revertir esto!",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: 'Borrar'
         }).then((result) => {
           if (result.isConfirmed) {
             this.encargadoService.deleteTrabajador(id)
@@ -58,10 +58,12 @@ departamentos:Departamento[]=[]
               next: (v) => {
                 Swal.fire({
                   icon: 'success',
-                  title: 'Registro Terminado',
-                  text: 'El nuevo Trabajador Ha Sido Registrado!',
+                  title: 'Trabajador Eliminado',
+                  text: 'El nuevo Trabajador Ha Sido Eliminado!',
                 })
-                window.location.reload()
+                setTimeout(function(){
+                  window.location.reload();
+               }, 2000);
               },
               error: (e) => console.error(e),
           })

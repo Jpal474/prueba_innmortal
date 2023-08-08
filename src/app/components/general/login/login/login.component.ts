@@ -94,9 +94,8 @@ export class LoginComponent {
        
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
+          title: 'Error!',
           text: `${err}`,
-          footer: '<a href="">Why do I have this issue?</a>'
         })
         
       }

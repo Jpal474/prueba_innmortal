@@ -40,11 +40,11 @@ export class NuevotrabajadorComponent {
   }
   crearFormulario(){
   this.trabajador_formulario=this.fb.group({
-    id:['', Validators.required],
-    nombre:['', Validators.required],
-    apellidos:['', Validators.required],
+    id:['', [Validators.required, Validators.pattern(/^FV-\d+$/)]],
+    nombre:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
+    apellidos:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
     dias_laborales:['', Validators.required],
-    telefono:['', Validators.required],
+    telefono:['', [Validators.required, Validators.pattern(/^\(\d{3}\)-\d{3}-\d{4}$/)]],
   
   })
 this.trabajador_departamento_formulario=this.fb.group({
@@ -67,7 +67,8 @@ getDepartamentos(){
   guardarTrabajador(){
     if(!this.trabajador_formulario.invalid){
     this.trabajador_departamento=this.trabajador_formulario.value;
-    console.log(this.trabajador_departamento_formulario.value.departamento)
+    console.log(`Valores ${this.trabajador_departamento_formulario}`)
+    console.log()
     if(this.departamentos !== null){
       this.encargadoService.getDepartamentoByNombre(this.trabajador_departamento_formulario.value.departamento.toLowerCase())
         .subscribe((res:Departamento) => {
@@ -119,15 +120,36 @@ getDepartamentos(){
   }
 
 get idNoValido(){
-  return this.trabajador_formulario.get('id')?.invalid && this.trabajador_formulario.get('id')?.touched
+  let mensaje:String='';
+  if( this.trabajador_formulario.get('id')?.errors?.['required'] && this.trabajador_formulario.get('id')?.touched){
+    mensaje= "El campo no puede estar vacío";
+  }
+  else if(this.trabajador_formulario.get('id')?.errors?.['pattern']){
+    mensaje= "El ID deber ser de la forma FV-XXX";
+  }
+  return mensaje
 }
 
-get nombreNoValido(){
-  return this.trabajador_formulario.get('nombre')?.invalid && this.trabajador_formulario.get('nombre')?.touched
+get nombreNoValido(): String{
+  let mensaje:String='';
+  if( this.trabajador_formulario.get('nombre')?.errors?.['required'] && this.trabajador_formulario.get('nombre')?.touched){
+    mensaje= "El campo no puede estar vacío";
+  }
+  else if(this.trabajador_formulario.get('nombre')?.errors?.['pattern']){
+    mensaje= "El nombre no puede contener números o carácteres especiales";
+  }
+  return mensaje
 }
 
-get apellidosNoValido(){
-  return this.trabajador_formulario.get('apellidos')?.invalid && this.trabajador_formulario.get('apellidos')?.touched
+get apellidosNoValido(): String{
+  let mensaje:String='';
+  if( this.trabajador_formulario.get('apellidos')?.errors?.['required'] && this.trabajador_formulario.get('apellidos')?.touched){
+    mensaje= "El campo no puede estar vacío";
+  }
+  else if(this.trabajador_formulario.get('apellidos')?.errors?.['pattern']){
+    mensaje= "El/Los apellidos no pueden contener números o carácteres especiales";
+  }
+  return mensaje
 }
 
 get diasNoValidos(){
@@ -135,7 +157,15 @@ get diasNoValidos(){
 }
 
 get telefonoNoValido(){
-  return this.trabajador_formulario.get('telefono')?.invalid && this.trabajador_formulario.get('telefono')?.touched
+  let mensaje:String='';
+  if( this.trabajador_formulario.get('telefono')?.errors?.['required'] && this.trabajador_formulario.get('telefono')?.touched){
+      mensaje="El campo no puede estar vacío"
+  }
+  else if(this.trabajador_formulario.get('telefono')?.errors?.['pattern']){
+    mensaje="El número debe ser ingresado en el formato (XXX)-XXX-XXXX"
+
+  }
+  return mensaje;
 }
 
     

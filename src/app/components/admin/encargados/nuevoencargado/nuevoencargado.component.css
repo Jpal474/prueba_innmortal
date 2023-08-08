@@ -37,9 +37,10 @@ span {
 }
 
 .card {
-    width: 80%;
-    height: 350px;
-    margin-left: 10%;
+    width: 80vw;
+    height: 50vh;
+    position: relative;
+    left: 10%;
 }
 
 @media screen and (max-width:900px) {

@@ -35,13 +35,13 @@ export class NuevoencargadoComponent {
   }
   crearFormulario(){
   this.encargado_formulario=this.fb.group({
-    nombre:['', Validators.required],
-    apellido_paterno:['', Validators.required],
-    apellido_materno:['', Validators.required],
-    fecha_nacimiento:['', Validators.required],
+    nombre:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
+    apellido_paterno:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
+    apellido_materno:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
+    fecha_nacimiento:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
     genero:['', Validators.required],
     correo:['', Validators.required],
-    telefono:['', Validators.required],
+    telefono:['', [Validators.required, Validators.pattern(/^\(\d{3}\)-\d{3}-\d{4}$/)]],
     contraseña:['', Validators.required],
     confirmar_contraseña:['', Validators.required]},
     )
@@ -51,7 +51,6 @@ export class NuevoencargadoComponent {
   guardarEncargado(){
     console.log(this.encargado_formulario.value)
     if(!this.encargado_formulario.invalid){
-      console.log('entra')
       const {confirmar_contraseña: _, ...nuevoEncargado}=this.encargado_formulario.value
       this.encargado=nuevoEncargado
       this.encargado.tipo='encargado'
@@ -93,13 +92,34 @@ export class NuevoencargadoComponent {
   }
   
   get nombreNoValido(){
-    return this.encargado_formulario.get('nombre')?.invalid && this.encargado_formulario.get('nombre')?.touched
+    let mensaje:String='';
+    if( this.encargado_formulario.get('nombre')?.errors?.['required'] && this.encargado_formulario.get('nombre')?.touched){
+      mensaje= "El campo no puede estar vacío";
+    }
+    else if(this.encargado_formulario.get('nombre')?.errors?.['pattern']){
+      mensaje= "El nombre no puede contener números o carácteres especiales";
+    }
+    return mensaje
   }
   get apellidopaternoNoValido(){
-    return this.encargado_formulario.get('apellido_paterno')?.invalid && this.encargado_formulario.get('apellido_paterno')?.touched
-  }
+    let mensaje:String='';
+    if( this.encargado_formulario.get('apellido_paterno')?.errors?.['required'] && this.encargado_formulario.get('apellido_paterno')?.touched){
+      mensaje= "El campo no puede estar vacío";
+    }
+    else if(this.encargado_formulario.get('apellido_paterno')?.errors?.['pattern']){
+      mensaje= "El apellido paterno no puede contener números o carácteres especiales";
+    }
+    return mensaje
+    }
   get apellidomaternoNoValido(){
-    return this.encargado_formulario.get('apellido_materno')?.invalid && this.encargado_formulario.get('apellido_materno')?.touched
+    let mensaje:String='';
+    if( this.encargado_formulario.get('apellido_materno')?.errors?.['required'] && this.encargado_formulario.get('apellido_materno')?.touched){
+      mensaje= "El campo no puede estar vacío";
+    }
+    else if(this.encargado_formulario.get('apellido_materno')?.errors?.['pattern']){
+      mensaje= "El apellido materno no puede contener números o carácteres especiales";
+    }
+    return mensaje
   }
   get fechaNoValido(){
     return this.encargado_formulario.get('fecha_nacimiento')?.invalid && this.encargado_formulario.get('fecha_nacimiento')?.touched
@@ -111,7 +131,14 @@ export class NuevoencargadoComponent {
     return this.encargado_formulario.get('fecha_nacimiento')?.invalid && this.encargado_formulario.get('fecha_nacimiento')?.touched
   }
   get telefonoNoValido(){
-    return this.encargado_formulario.get('telefono')?.invalid && this.encargado_formulario.get('telefono')?.touched
+    let mensaje:String='';
+    if( this.encargado_formulario.get('telefono')?.errors?.['required'] && this.encargado_formulario.get('telefono')?.touched){
+      mensaje= "El campo no puede estar vacío";
+    }
+    else if(this.encargado_formulario.get('telefono')?.errors?.['pattern']){
+      mensaje="El número debe ser ingresado en el formato (XXX)-XXX-XXXX"
+    }
+    return mensaje
   }
   get contraseniaNoValido(){
     return this.encargado_formulario.get('contraseña')?.invalid && this.encargado_formulario.get('contraseña')?.touched

@@ -13,7 +13,7 @@
 
                             <label>Nombre<span>*</span></label>
                         </div>
-                        <small *ngIf="nombreNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                        <small *ngIf="nombreNoValido" class="text-danger"> {{nombreNoValido}} </small>
                     </div>
                     <div class="col">
                         <div class="input-group">
@@ -21,7 +21,7 @@
 
                             <label>Apellido Paterno<span>*</span></label>
                         </div>
-                        <small *ngIf="apellidopaternoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                        <small *ngIf="apellidopaternoNoValido" class="text-danger"> {{apellidopaternoNoValido}} </small>
                     </div>
                     <div class="col">
                         <div class="input-group">
@@ -29,7 +29,7 @@
 
                             <label>Apellido Materno<span>*</span></label>
                         </div>
-                        <small *ngIf="apellidomaternoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                        <small *ngIf="apellidomaternoNoValido" class="text-danger"> {{apellidomaternoNoValido}} </small>
                     </div>
                     <div class="form-group row ">
                         <div class="col">
@@ -65,7 +65,7 @@
                                 <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
                                 <label>Teléfono<span>*</span></label>
                             </div>
-                            <small *ngIf="telefonoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                            <small *ngIf="telefonoNoValido" class="text-danger"> {{telefonoNoValido}}</small>
                         </div>
                         <div class="col">
                             <div class="input-group">

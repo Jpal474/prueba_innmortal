@@ -4,7 +4,7 @@
 </a>
 
 <div class="card mt-5">
-    <div class="card-body" style="margin-left: 10%">
+    <div class="card-body">
         <div class="container text-center">
             <p>Los campos con (*) son obligatorios</p>
             <form autocomplete="off" [formGroup]="encargado_formulario" (ngSubmit)="guardarEncargado()" class="mt-2">
@@ -14,7 +14,7 @@
                             <input type="text" class="form-control shadow-none" formControlName="nombre" [class.is-invalid]="nombreNoValido" />
                             <label>Nombre<span>*</span></label>
                         </div>
-                        <small *ngIf="nombreNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                        <small *ngIf="nombreNoValido" class="text-danger"> {{nombreNoValido}} </small>
 
                     </div>
                     <div class="col">
@@ -23,7 +23,7 @@
 
                             <label>Apellido Paterno<span>*</span></label>
                         </div>
-                        <small *ngIf="apellidopaternoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                        <small *ngIf="apellidopaternoNoValido" class="text-danger"> {{apellidopaternoNoValido}} </small>
                     </div>
                     <div class="col">
                         <div class="input-group">
@@ -31,7 +31,7 @@
 
                             <label>Apellido Materno<span>*</span></label>
                         </div>
-                        <small *ngIf="apellidomaternoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                        <small *ngIf="apellidomaternoNoValido" class="text-danger"> {{apellidomaternoNoValido}} </small>
                     </div>
                     <div class="form-group row">
                         <div class="col">
@@ -71,7 +71,7 @@
                                 <input type="text" class="form-control shadow-none" formControlName="telefono" [class.is-invalid]="telefonoNoValido" />
                                 <label>Teléfono <span>*</span></label>
                             </div>
-                            <small *ngIf="telefonoNoValido" class="text-danger"> El campo no puede estar vacio y</small>
+                            <small *ngIf="telefonoNoValido" class="text-danger"> {{telefonoNoValido}} </small>
 
                         </div>
                         <div class="col">

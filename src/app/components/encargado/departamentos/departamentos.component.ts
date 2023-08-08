@@ -77,7 +77,7 @@ constructor(
     if(departamento && localStorage.getItem('id_supermercado') === null){
       Swal.fire({
         icon: 'error',
-        title: 'Oops...',
+        title: 'Error!',
         text: 'No es posible dar de alta un departamento hasta registrar un supermercado',
       })
     }
@@ -93,20 +93,20 @@ constructor(
     })
     
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: '¿Estás Seguro?',
+      text: "No serás capaz de revertir esto!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: 'Borrar',
+      cancelButtonText: 'Cancelar',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
         this.encargadoService.deleteDepartamento(departamentoid)
         .subscribe((res:Departamento) => {
           swalWithBootstrapButtons.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            'Borrado!',
+            'El Departamento Ha Sido Eliminado',
             'success'
           )
           setTimeout(function(){
