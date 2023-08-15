@@ -11,6 +11,7 @@ export interface Encargado{
     telefono: string;
     contraseña: string;
     tipo?:string;
+    imagen?:string;
     supermercado?:Supermercado;
 }
 

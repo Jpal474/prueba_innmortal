@@ -9,6 +9,7 @@ export interface Encargado{
     fecha_nacimiento: string;
     correo: string;
     telefono: string;
+    imagen?:string;
     contraseña: string;
     tipo?:string;
     supermercado?:Supermercado;

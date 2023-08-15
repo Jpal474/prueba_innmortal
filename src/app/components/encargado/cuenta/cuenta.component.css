@@ -1,0 +1,37 @@
+.container {
+    position: relative;
+    /* Make the container a reference for absolute positioning */
+}
+
+img {
+    /* Your existing image styles */
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.img2 {
+    width: 35px;
+    height: 35px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    /* Your existing button styles */
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: green;
+    border-radius: 45%;
+    position: absolute;
+    top: 23vh;
+    /* Center the button vertically within the container */
+    left: 18%;
+    /* Center the button horizontally within the container */
+    transform: translate(-52%, -52%);
+    /* Adjust position based on button size */
+}

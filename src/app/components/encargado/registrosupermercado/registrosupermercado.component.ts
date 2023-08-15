@@ -34,16 +34,16 @@ export class RegistrosupermercadoComponent implements OnInit{
   }
   crearFormulario(){
   this.supermercado_formulario=this.fb.group({
-    nombre:['', Validators.required],
-    calle:['', Validators.required],
-    numero:[0, Validators.required],
-    codigo_postal:[0, Validators.required],
-    colonia:['', Validators.required],
-    estado:['', Validators.required],
-    ciudad:['', Validators.required],
-    razon_social:['', Validators.required],
-    correo:['', Validators.required],
-    telefono:['', Validators.required, ],
+    nombre:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
+    calle:['', [Validators.required, Validators.pattern('^[a-zA-Z0-9\s,]+$')]],
+    numero:[0, [Validators.required, Validators.pattern('^\\d+(?:-[A-Z])?$')]],
+    codigo_postal:[0, [Validators.required, Validators.pattern(/^\d+$/)]],
+    colonia:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
+    estado:['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+    ciudad:['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+    razon_social:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
+    correo:['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
+    telefono:['', [Validators.required, Validators.pattern(/^\(\d{3}\)-\d{3}-\d{4}$/)]],
   
   })
   }
@@ -69,45 +69,122 @@ export class RegistrosupermercadoComponent implements OnInit{
 
   
 
+  }else{
+    return Object.values( this.supermercado_formulario.controls ).forEach( control => {
+        
+      if ( control instanceof FormGroup ) {
+        Object.values( control.controls ).forEach( control => control.markAsTouched() );
+      } else {
+        control.markAsTouched();
+      }
+      
+      
+    });
   }
 }
-get calleNoValido(){
-  return this.supermercado_formulario.get('calle')?.invalid && this.supermercado_formulario.get('calle')?.touched
+get calleNoValido(): string{
+  let mensaje=""
+  if( this.supermercado_formulario.get('calle')?.errors?.['required'] && this.supermercado_formulario.get('calle')?.touched){
+    mensaje= "El campo no puede estar vacío";
+  }
+  else if(this.supermercado_formulario.get('calle')?.errors?.['pattern']){
+    mensaje= "La calle nombre no puede contener carácteres especiales";
+  }
+  return mensaje;
 }
 
-get numeroNoValido(){
-return this.supermercado_formulario.get('numero')?.invalid && this.supermercado_formulario.get('numero')?.touched
+get numeroNoValido(): string{
+  let mensaje=""
+if( this.supermercado_formulario.get('numero')?.errors?.['required'] && this.supermercado_formulario.get('numero')?.touched){
+  mensaje= "El campo no puede estar vacío";
+}
+else if(this.supermercado_formulario.get('numero')?.errors?.['pattern']){
+  mensaje = "El campo sólo puede tener numero o letras en formato X ó XX-A";
+}
+return mensaje;
 }
 
-get nombreNoValido(){
-return this.supermercado_formulario.get('nombre')?.invalid && this.supermercado_formulario.get('nombre')?.touched
+get nombreNoValido():string{
+  let mensaje=""
+if (this.supermercado_formulario.get('nombre')?.errors?.['required'] && this.supermercado_formulario.get('nombre')?.touched){
+mensaje="El campo no puede estar vacío"
+}
+else if(this.supermercado_formulario.get('nombre')?.errors?.['pattern']){
+mensaje="El campo no puede contener números o carácteres especiales"
+}
+return mensaje
 }
 
 get codigoPostalNoValido(){
-return this.supermercado_formulario.get('codigo_postal')?.invalid && this.supermercado_formulario.get('codigo_postal')?.touched
+let mensaje=""
+if(this.supermercado_formulario.get('codigo_postal')?.errors?.['required'] && this.supermercado_formulario.get('codigo_postal')?.touched){
+  mensaje="El campo no puede estar vacío"
 }
-get coloniaNoValida(){
-  return this.supermercado_formulario.get('colonia')?.invalid && this.supermercado_formulario.get('colonia')?.touched
+else if(this.supermercado_formulario.get('codigo_postal')?.errors?.['pattern']){
+  mensaje="El campo sólo puedo contener números"
+}
+return mensaje;
+}
+get coloniaNoValida(): string{
+  let mensaje=""
+  if (this.supermercado_formulario.get('colonia')?.errors?.['required'] && this.supermercado_formulario.get('colonia')?.touched){
+      mensaje="El campo no puede estar vacío"
   }
-
-get diasNoValidos(){
-return this.supermercado_formulario.get('colonia')?.invalid && this.supermercado_formulario.get('colonia')?.touched
-}
-
-get telefonoNoValido(){
-return this.supermercado_formulario.get('telefono')?.invalid && this.supermercado_formulario.get('telefono')?.touched
-}
-get estadoNoValido(){
-  return this.supermercado_formulario.get('estado')?.invalid && this.supermercado_formulario.get('estado')?.touched
+  else if(this.supermercado_formulario.get('colonia')?.errors?.['pattern']){
+      mensaje="El campo no acepta carácteres especiales"
   }
-get ciudadNoValido(){
-    return this.supermercado_formulario.get('ciudad')?.invalid && this.supermercado_formulario.get('ciudad')?.touched
+  return mensaje  
+}
+
+get telefonoNoValido():string{
+let mensaje="";
+if( this.supermercado_formulario.get('telefono')?.errors?.['required'] && this.supermercado_formulario.get('telefono')?.touched){
+mensaje="El campo no puede estar vacío"
+}
+else if (this.supermercado_formulario.get('telefono')?.errors?.['pattern']){
+mensaje="El número debe ser ingresado en el formato (XXX)-XXX-XXXX"
+}
+return mensaje;
+}
+get estadoNoValido():string{
+  let mensaje="";
+  if(this.supermercado_formulario.get('estado')?.errors?.['required'] && this.supermercado_formulario.get('estado')?.touched){
+   mensaje = "El campo no puede estar vacío";
+  }
+  else if (this.supermercado_formulario.get('estado')?.errors?.['pattern']){
+    mensaje="El campo no puede contener números o carácteres especiales"
+  }
+ return mensaje  
+}
+get ciudadNoValido():string{
+  let mensaje=""
+  if(this.supermercado_formulario.get('ciudad')?.errors?.['required'] && this.supermercado_formulario.get('ciudad')?.touched){
+mensaje="El campo no puede estar vacío"
+  }
+  else if(this.supermercado_formulario.get('ciudad')?.errors?.['pattern']){
+    mensaje="El campo no puede contener número o caracteres especiales"
+  }
+  return mensaje;
     }
-get razonSocialNoValida(){
-      return this.supermercado_formulario.get('razon_social')?.invalid && this.supermercado_formulario.get('razon_social')?.touched
+get razonSocialNoValida(): string{
+  let mensaje="";
+      if(this.supermercado_formulario.get('razon_social')?.errors?.['required'] && this.supermercado_formulario.get('razon_social')?.touched){
+          mensaje="El campo no puede estar vacío"
       }
-get correoNoValido(){
-        return this.supermercado_formulario.get('correo')?.invalid && this.supermercado_formulario.get('correo')?.touched
+      else if(this.supermercado_formulario.get('razon_social')?.errors?.['pattern']){
+          mensaje = "El campo no puede contener caracteres especiales"
+      }
+    return mensaje;  
+    }
+get correoNoValido():string{
+  let mensaje="";
+  if(this.supermercado_formulario.get('correo')?.errors?.['required'] && this.supermercado_formulario.get('correo')?.touched){
+      mensaje="El campo no puede estar vacío"
+  }
+  else if(this.supermercado_formulario.get('correo')?.errors?.['pattern']){
+    mensaje="Ingrese un formato de correo válido"
+  }
+  return mensaje;
         }
 
 }

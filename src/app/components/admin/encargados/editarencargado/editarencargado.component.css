@@ -37,17 +37,15 @@ span {
 }
 
 .card {
-    width: 80vw;
-    height: 50vh;
-    position: relative;
-    left: 10%;
+    width: auto;
+    height: auto;
 }
 
 @media screen and (max-width:900px) {
     .card {
-        width: 480px;
-        height: 400px;
-        margin-left: 5%;
+        width: auto;
+        height: auto;
+        margin-right: 5%;
     }
     .input-group label {
         position: absolute;
@@ -61,7 +59,8 @@ span {
         transition: .5s;
     }
     .input-group input {
-        font-size: 10px;
+        font-size: 0.625rem;
+        margin-bottom: 10px;
     }
     span {
         color: red;
@@ -72,15 +71,12 @@ span {
         background: white;
         box-shadow: none;
     }
-    .input-group {
-        width: 100px;
-        height: 20px;
-    }
     span img {
         width: 10px;
         height: 10px;
     }
-    .form-group {
-        margin-top: 40px;
+    select {
+        height: 1.8rem;
+        font-size: 0.625rem;
     }
 }

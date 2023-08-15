@@ -3,6 +3,17 @@
     <a class="btn btn-success text-white" [routerLink]="['/admin/registrar']">AGREGAR ENCARGADO</a>
 </div>
 
+<div class="d-grid gap-2 col-8 mx-auto justify-content-md-end mt-3">
+    <label>Items Por Página</label>
+    <select class="form-select w-50" aria-label="Default select example" #item (change)="actualizarItems(item.value)">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
+</div>
+
 <div class="row justify-content-center mt-5">
     <div class="col-*-*">
         <div class="table-responsive mt-5" style="margin-left: 10%;">
@@ -19,7 +30,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let encargado of encargados | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <tr *ngFor="let encargado of encargados | paginate: { itemsPerPage: items, currentPage: p }">
                         <th scope="row">{{encargado.nombre}} {{encargado.apellido_paterno}} {{encargado.apellido_materno}}
                         </th>
                         <td>{{encargado.fecha_nacimiento}}</td>

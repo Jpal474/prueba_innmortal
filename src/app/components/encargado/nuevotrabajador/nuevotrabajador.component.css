@@ -1,9 +1,9 @@
-.container-dep .input-group {
-    width: 400px;
+.container-dep {
+    width: 40vw;
 }
 
 .card {
-    width: 60vw;
+    width: auto;
 }
 
 .input-group label {
@@ -42,31 +42,61 @@ span {
     color: red;
 }
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:700px) and ( min-width:575px) {
     .input-group label {
-        font-size: 10px;
-    }
-    .input-group {
-        width: 100px;
-        height: 20px;
+        font-size: 0.625rem;
     }
     .input-group .btn {
-        font-size: 10px;
+        font-size: 0.625rem;
         width: 70px;
     }
+    select {
+        font-size: 0.625rem;
+    }
     .card {
-        margin-top: 10%;
-        width: 90vw;
-        height: 60vh;
-    }
-    .form-control {
-        width: 100px;
-    }
-    .container-dep .input-group {
-        width: 200px;
+        width: auto;
+        height: auto;
     }
     .card .btn {
         position: absolute;
         bottom: 0;
+    }
+}
+
+@media screen and (max-width:574px) {
+    .input-group label {
+        font-size: 0.625rem;
+    }
+    .card {
+        margin-top: 10%;
+        width: auto;
+        height: auto;
+    }
+    .input-group input {
+        font-size: 0.625rem;
+        margin-top: 10%;
+    }
+    select {
+        font-size: 0.625rem;
+    }
+    .card .btn {
+        position: absolute;
+        bottom: 0;
+    }
+    .input-group input:focus~label,
+    .input-group input:valid~label {
+        top: 22px;
+        background: white;
+        box-shadow: none;
+    }
+    .input-group #telefono:focus~label,
+    .input-group #telefono:valid~label {
+        top: 10px;
+    }
+    .container-dep {
+        width: auto;
+    }
+    .form-select {
+        width: 100%;
     }
 }

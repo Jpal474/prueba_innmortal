@@ -32,23 +32,15 @@ span {
     margin-top: 35px;
 }
 
-.input-group {
-    width: 80%;
-}
-
 .card {
     width: 80vw;
     height: 50vh;
-    position: relative;
-    left: 10%;
 }
 
 @media screen and (max-width:900px) {
     .card {
         width: 480px;
         height: 400px;
-        position: absolute;
-        left: 50%;
     }
     .input-group label {
         position: absolute;
@@ -70,12 +62,22 @@ span {
         background: white;
         box-shadow: none;
     }
-    .input-group {
-        width: 100px;
-        height: 20px;
+    .input-group input {
+        font-size: 0.625rem;
     }
     span img {
         width: 10px;
         height: 10px;
+    }
+}
+
+@media screen and (max-width:580px) {
+    .card {
+        width: 70vw;
+        height: auto;
+    }
+    .btn {
+        position: absolute;
+        bottom: 0;
     }
 }

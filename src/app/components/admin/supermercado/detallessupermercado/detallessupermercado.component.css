@@ -1,5 +1,6 @@
 .card {
-    width: 40vw;
+    width: auto;
+    height: auto;
 }
 
 .card-header {
@@ -12,37 +13,37 @@
     color: white
 }
 
+.row img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .th {
     background-color: #33383e;
     color: white;
 }
 
 .smaller {
-    font-size: 70%;
+    font-size: 0.70rem;
     font-weight: bold;
 }
 
 .smaller-response {
-    font-size: 80%;
+    font-size: 0.80rem;
 }
 
-@media screen and (max-width:800px) {
-    .card {
-        width: 35vw;
-        height: 85vh;
-    }
+@media screen and (max-width:450px) {
     .smaller {
-        font-size: 7px;
         font-weight: bold;
+        font-size: 0.7rem;
     }
     .smaller-response {
-        font-size: 8px;
+        font-size: 0.8rem;
     }
     .row img {
-        position: absolute;
-        top: 30%;
-        left: -10%;
-        width: 50px;
-        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: relative;
+        left: 10%;
     }
 }

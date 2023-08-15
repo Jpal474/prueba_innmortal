@@ -1,5 +1,6 @@
 .card {
-    width: 60vw;
+    width: auto;
+    height: auto;
 }
 
 span {
@@ -33,4 +34,68 @@ span {
 
 .form-control:focus {
     border-color: black;
+}
+
+@media screen and (max-width:700px) and ( min-width:575px) {
+    .input-group label {
+        font-size: 0.625rem;
+    }
+    .input-group .btn {
+        font-size: 0.625rem;
+        width: 70px;
+    }
+    select {
+        font-size: 0.625rem;
+    }
+    .card {
+        width: auto;
+        height: auto;
+    }
+    .card .btn {
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+@media screen and (max-width:574px) {
+    .input-group label {
+        font-size: 0.625rem;
+    }
+    .card {
+        margin-top: 10%;
+        width: auto;
+        height: auto;
+    }
+    .input-group input {
+        font-size: 0.625rem;
+        margin-top: 10%;
+    }
+    select {
+        font-size: 0.625rem;
+    }
+    .card .btn {
+        position: absolute;
+        bottom: 0;
+    }
+    .input-group input:focus~label,
+    .input-group input:valid~label {
+        top: 22px;
+        background: white;
+        box-shadow: none;
+    }
+    .input-group #telefono:focus~label,
+    .input-group #telefono:valid~label {
+        top: 10px;
+    }
+    .input-group #dias:focus~label,
+    .input-group #dias:valid~label {
+        top: 10px;
+    }
+    .form-select {
+        width: 100%;
+    }
+    .btn {
+        width: auto;
+        font-size: 0.6rem;
+    }
 }

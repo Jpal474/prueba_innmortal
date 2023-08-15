@@ -30,7 +30,7 @@
             <div class="container">
                 <form autocomplete="off" [formGroup]="trabajador_formulario" (ngSubmit)="actualizarTrabajador()" class="mt-2">
                     <div class="form-group row justify-content-center">
-                        <div class="col-6 col-sm-3">
+                        <div class="col-12 col-md-4">
                             <div class="input-group">
                                 <input type="text" class="form-control shadow-none" formControlName="id" [class.is-invalid]="idNoValido">
 
@@ -39,22 +39,22 @@
                             <small *ngIf="idNoValido" class="text-danger"> {{idNoValido}}</small>
 
                         </div>
-                        <div class="col-6 col-sm-3">
+                        <div class="col-12 col-md-4">
 
                             <div class="input-group">
                                 <input type="text" class="form-control shadow-none" formControlName="nombre" [class.is-invalid]="nombreNoValido">
 
                                 <label>Nombre<span>*</span></label>
                             </div>
-                            <small *ngIf="nombreNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                            <small *ngIf="nombreNoValido" class="text-danger"> {{nombreNoValido}}</small>
                         </div>
-                        <div class="col-6 col-sm-3">
+                        <div class="col-12 col-md-4">
                             <div class="input-group">
                                 <input type="text" class="form-control shadow-none" formControlName="apellidos" [class.is-invalid]="apellidosNoValido">
 
                                 <label>Apellidos<span>*</span></label>
                             </div>
-                            <small *ngIf="apellidosNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                            <small *ngIf="apellidosNoValido" class="text-danger"> {{apellidosNoValido}}</small>
                         </div>
 
 
@@ -63,20 +63,20 @@
                     <div class="form-group row justify-content-center mt-5">
                         <div class="col-6 col-sm-3">
                             <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="dias_laborales" [class.is-invalid]="diasNoValidos">
+                                <input type="text" class="form-control shadow-none" formControlName="dias_laborales" id="dias" [class.is-invalid]="diasNoValidos">
 
                                 <label>Días Laborales<span>*</span></label>
                             </div>
-                            <small *ngIf="diasNoValidos" class="text-danger"> El campo no puede estar vacio</small>
+                            <small *ngIf="diasNoValidos" class="text-danger"> {{diasNoValidos}}</small>
                         </div>
                         <div class="col-6 col-sm-3">
 
                             <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
+                                <input type="text" class="form-control shadow-none" formControlName="telefono" id="telefono" [class.is-invalid]="telefonoNoValido">
 
                                 <label>Telefono<span>*</span></label>
                             </div>
-                            <small *ngIf="telefonoNoValido" class="text-danger"> El campo no puede estar vacio</small>
+                            <small *ngIf="telefonoNoValido" class="text-danger"> {{telefonoNoValido}}</small>
                         </div>
                         <div class="col-6 col-sm-3">
 

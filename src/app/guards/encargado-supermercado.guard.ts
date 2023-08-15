@@ -3,6 +3,7 @@ import { AdminService } from '../services/admin-encargado.service';
 import { Encargado, EncargadoGenero } from '../interfaces/encargados.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,12 @@ class Permissions {
            else{
             band = true;
            }
+    },
+    error: (e) => {
+      Swal.fire({
+        icon: 'error',
+        text: e,
+      })
     }
    })
    return band;

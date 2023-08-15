@@ -6,6 +6,7 @@ import { NuevotrabajadorComponent } from '../nuevotrabajador/nuevotrabajador.com
 import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 import { EditartrabajadorComponent } from '../editartrabajador/editartrabajador.component';
 import { encargadoSupermercadoGuard } from 'src/app/guards/encargado-supermercado.guard';
+import { CuentaComponent } from '../cuenta/cuenta.component';
 
 
 
@@ -15,6 +16,7 @@ export const ENCARGADO_ROUTES: Routes = [
     { path: 'trabajadores', component:TrabajadoresComponent },
     { path: 'registrar-trabajador', component:NuevotrabajadorComponent },
     { path: 'editar-trabajador/:id', component:EditartrabajadorComponent },
+    { path: 'ver-cuenta', component: CuentaComponent },
     {path:'pagenotfound', component:PagenotfoundComponent},
     {path:'**', pathMatch:'full', redirectTo:'pagenotfound'},
     //{ path: 'path/:routeParam', component: MyComponent },

@@ -28,6 +28,8 @@
 
                             <label>Numero<span>*</span></label>
                         </div>
+
+                        <small *ngIf="numeroNoValido" class="text-danger"> {{numeroNoValido}} </small>
                     </div>
                     <div class="form-group row mt-4">
                         <div class="col-6 col-sm-3">
@@ -77,6 +79,8 @@
 
                                 <label>Teléfono<span>*</span></label>
                             </div>
+
+                            <small *ngIf="telefonoNoValido" class="text-danger"> {{telefonoNoValido}} </small>
                         </div>
                     </div>
                     <div class="form-group row mt-4">

@@ -6,6 +6,7 @@ import { Trabajador } from '../interfaces/trabajador.interface';
 import { Departamento } from '../interfaces/departamento.interface';
 import { DepartamentoSupermercado } from '../interfaces/departamento-supermercado.interface';
 import { TrabajadorDepartamento } from '../interfaces/trabajador-departamento.interface';
+import { Encargado } from '../interfaces/encargados.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +66,12 @@ export class EncargadoService {
     console.log(id);
     return this.httpClient.delete<Trabajador>(`${this.BASE_URL}/trabajadores/${id}`);
   }
+
+  uploadImagenPerfil(id: string, file: File): Observable<Encargado> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.httpClient.post<Encargado>(`${this.BASE_URL}/auth/upload/${id}`, formData);
+  }
+
 
 }

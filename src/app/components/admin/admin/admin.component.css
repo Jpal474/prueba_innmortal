@@ -34,8 +34,15 @@ app-sidebar {
     left: 250px;
 }
 
-@media screen and ( max-width:450px) {
+@media screen and ( max-width:850px) {
     main {
         margin-top: 3%;
+    }
+    app-sidebar {
+        display: none;
+    }
+    .app-sidebarencargado-open {
+        width: 230px;
+        display: block;
     }
 }

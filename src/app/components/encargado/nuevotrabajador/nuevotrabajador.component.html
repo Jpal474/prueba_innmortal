@@ -25,32 +25,32 @@
             Datos del Trabajador
             <hr>
         </div>
-        <div class="card-body ">
-            <div class="container">
+        <div class="container-fluid">
+            <div class="card-body ">
                 <form autocomplete="off" [formGroup]="trabajador_formulario" (ngSubmit)="guardarTrabajador()" class="mt-2">
                     <div class="form-group row justify-content-center">
-                        <div class="col-6 col-sm-3">
+                        <div class="col-12 col-md-4">
                             <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="id" [class.is-invalid]="idNoValido">
+                                <input type="text" id="id" class="form-control shadow-none" formControlName="id" [class.is-invalid]="idNoValido">
 
                                 <label>ID<span>*</span></label>
                             </div>
                             <small *ngIf="idNoValido" class="text-danger"> {{idNoValido}} </small>
 
                         </div>
-                        <div class="col-6 col-sm-3">
+                        <div class="col-12 col-md-4">
 
                             <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+                                <input type="text" class="form-control shadow-none" id="nombre" formControlName="nombre" [class.is-invalid]="nombreNoValido">
 
                                 <label>Nombre<span>*</span></label>
                             </div>
                             <small *ngIf="nombreNoValido" class="text-danger"> {{nombreNoValido}}</small>
 
                         </div>
-                        <div class="col-6 col-sm-3">
+                        <div class="col-12 col-md-4">
                             <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="apellidos" [class.is-invalid]="apellidosNoValido">
+                                <input type="text" class="form-control shadow-none" id="apellidos" formControlName="apellidos" [class.is-invalid]="apellidosNoValido">
 
                                 <label>Apellidos<span>*</span></label>
                             </div>
@@ -64,7 +64,7 @@
                     <div class="form-group row justify-content-center mt-5">
                         <div class="col-6 col-sm-3">
                             <div class="input-group">
-                                <select class="select" multiple formControlName="dias_laborales" [class.is-invalid]="apellidosNoValido">
+                                <select class="select" multiple formControlName="dias_laborales" id="dias_laborales" [class.is-invalid]="apellidosNoValido">
                                     <option value="L">Lunes</option>
                                     <option value="M">Martes</option>
                                     <option value="Mi">Miercoles</option>
@@ -80,7 +80,7 @@
                         <div class="col-6 col-sm-3">
 
                             <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
+                                <input type="text" class="form-control shadow-none" id="telefono" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
 
                                 <label>Telefono<span>*</span></label>
                             </div>

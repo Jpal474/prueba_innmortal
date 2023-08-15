@@ -59,6 +59,12 @@ getDepartamentos(){
     next: (res:Departamento[]) => {
       this.departamentos=res
       console.log(`Departamentos ${this.departamentos}`)
+    },
+    error: (e) => {
+      Swal.fire({
+        icon: 'error',
+        text: e,
+      })
     }
   })
 }
@@ -70,6 +76,7 @@ getDepartamentos(){
     console.log(`Valores ${this.trabajador_departamento_formulario}`)
     console.log()
     if(this.departamentos !== null){
+      console.log(`Nombre del Departamento ${this.trabajador_departamento_formulario.value.departamento.toLowerCase()}`)
       this.encargadoService.getDepartamentoByNombre(this.trabajador_departamento_formulario.value.departamento.toLowerCase())
         .subscribe((res:Departamento) => {
           console.log(`departamento ${res}`)

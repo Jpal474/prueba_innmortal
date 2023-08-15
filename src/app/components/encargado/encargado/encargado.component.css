@@ -39,6 +39,11 @@ app-sidebarencargado {
     app-sidebarencargado {
         top: 50px;
         height: 100vh;
+        display: none;
+    }
+    .app-sidebarencargado-open {
+        width: 230px;
+        display: block;
     }
     app-header {
         width: 200vw;

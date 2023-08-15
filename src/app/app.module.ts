@@ -8,10 +8,12 @@ import { AdminModule } from './components/admin/admin/admin.module';
 import { EncargadoModule } from './components/encargado/encargado/encargado.module';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { LandingModule } from './components/general/landing/landing.module';
+import { CuentaComponent } from './components/encargado/cuenta/cuenta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CuentaComponent,
   ],
   imports: [
     BrowserModule,

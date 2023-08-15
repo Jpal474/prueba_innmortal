@@ -13,6 +13,7 @@ import { DepartamentoSupermercado } from '../../admin/interfaces/departamento-su
 })
 export class DepartamentosComponent implements OnInit{
   p: number = 1;
+  items:number=5;
   departamento_supermercado:DepartamentoSupermercado={
     nombre:'',
     supermercado:{id:'',
@@ -37,12 +38,37 @@ constructor(
   }
 
   getDepartamentos(){
-   this.encargadoService.getDepartamentosBySuperId(localStorage.getItem('id_supermercado')!)
-   .subscribe((res:Departamento[]) => {
-    this.departamentos=res
-    console.log(res)
-   })
+    if(localStorage.getItem('id_supermercado') !== null){
+      console.log('entra al if')
+     this.encargadoService.getDepartamentosBySuperId(localStorage.getItem('id_supermercado')!)
+   .subscribe({
+    next: (res:Departamento[]) => {
+    if(res.length===0){
+      Swal.fire({
+        icon: 'warning',
+        text: 'No hay departamentos por mostrar!',
+      })
+    }
+    else{
+      this.departamentos=res;
+    }
+   },
+  error: (e) => {
+    Swal.fire({
+      icon: 'error',
+      text: e,
+    })
   }
+  })
+  }
+  else{
+    Swal.fire({
+      icon: 'warning',
+      text: 'No hay departamentos por mostrar!',
+    })
+  }
+  }
+
 
   async guardarDepartamento(){
     const { value: departamento } = await Swal.fire({
@@ -125,6 +151,11 @@ constructor(
         )
       }
     })
+  }
+
+  actualizarItems(items:string){
+    this.items=parseInt(items)
+    console.log(items);
   }
 
 }

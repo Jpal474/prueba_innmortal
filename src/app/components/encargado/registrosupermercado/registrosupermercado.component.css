@@ -1,5 +1,6 @@
 .card {
-    width: 60vw;
+    width: auto;
+    height: auto;
 }
 
 span {
@@ -34,7 +35,8 @@ p {
 
 @media screen and (max-width:550px) {
     .card {
-        width: 60vw;
+        width: auto;
+        height: auto;
     }
     .input-group {
         font-size: 10px;

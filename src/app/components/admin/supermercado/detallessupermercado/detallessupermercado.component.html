@@ -2,119 +2,116 @@
 
     Datos de Supermercado</h1>
 <div class="row justify-content-evenly mb-5">
-    <div class="col-4">
-        <div class="card">
+    <div class="col-md-6 col-lg-4">
+        <!-- Adjust column widths for different screen sizes -->
+        <div class="card mb-3">
             <div class="card-header text-center">
                 {{supermercado.nombre}}
             </div>
             <div class="card-body">
-                <div class="row justify-content-around">
-                    <div class="col-4">
+                <!-- Rows for each set of details -->
+                <div class="row mb-2">
+                    <div class="col-md-6">
                         <p><span class="smaller">Calle:</span> <span class="smaller-response"> {{supermercado.calle}}</span></p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-6">
                         <p><span class="smaller">Ciudad:</span> <span class="smaller-response"> {{supermercado.ciudad}}</span></p>
                     </div>
-
                 </div>
-                <div class="row justify-content-around">
-                    <div class="col-4">
-                        <p> <span class="smaller">Número:</span> <span class="smaller-response"> {{supermercado.numero}}</span></p>
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <p><span class="smaller">Número:</span> <span class="smaller-response"> {{supermercado.numero}}</span></p>
                     </div>
-                    <div class="col-4">
-                        <p> <span class="smaller">Razón Social:</span> <span class="smaller-response"> {{supermercado.razon_social}}</span></p>
-
-                    </div>
-
-                </div>
-                <div class="row justify-content-around">
-                    <div class="col-4">
-                        <p> <span class="smaller">C.P.:</span> <span class="smaller-response"> {{supermercado.codigo_postal}}</span></p>
-                    </div>
-                    <div class="col-4">
-                        <p> <span class="smaller">Correo Electronico:</span> <span class="smaller-response"> {{supermercado.correo}}</span></p>
-
-                    </div>
-
-                </div>
-                <div class="row justify-content-around">
-                    <div class="col-4">
-                        <p> <span class="smaller">Colonia:</span> <span class="smaller-response"> {{supermercado.colonia}}</span></p>
-                    </div>
-                    <div class="col-4">
-                        <p> <span class="smaller">Telefono:</span> <span class="smaller-response"> {{supermercado.telefono}}</span></p>
-
+                    <div class="col-md-6">
+                        <p><span class="smaller">Razón Social:</span> <span class="smaller-response"> {{supermercado.razon_social}}</span></p>
                     </div>
                 </div>
-                <div class="row justify-content-around">
-                    <div class="col-4">
-                        <p> <span class="smaller">Estado:</span> <span class="smaller-response"> {{supermercado.estado}}</span></p>
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <p><span class="smaller">C.P:</span> <span class="smaller-response"> {{supermercado.numero}}</span></p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-md-6">
+                        <p><span class="smaller">Correo Electrónico:</span> <span class="smaller-response"> {{supermercado.correo}}</span></p>
                     </div>
                 </div>
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <p><span class="smaller">Colonia:</span> <span class="smaller-response"> {{supermercado.colonia}}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><span class="smaller">Telefono:</span> <span class="smaller-response"> {{supermercado.telefono}}</span></p>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <p><span class="smaller">Estado:</span> <span class="smaller-response"> {{supermercado.estado}}</span></p>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+                <!-- More rows as needed -->
+
             </div>
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-md-6 col-lg-4">
+        <!-- Adjust column widths for different screen sizes -->
         <div class="card">
             <div class="card-header text-center">
                 Encargado
             </div>
             <div class="row justify-content-around">
-                <div class="col-4">
-                    <img src="../../../../../assets/recursos/super-admin/CARD ENCARGADO/avatar_encargado.svg" class="w-75 p-1">
+                <div class="imagen-contenerdor col-md-4">
+                    <img src="{{imgURL}}" class="w-100 p-1">
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 text-center">
                     <p>{{encargado.nombre}} {{encargado.apellido_paterno}} {{encargado.apellido_materno}} </p>
                     <p>{{encargado.fecha_nacimiento}}</p>
                     <p>{{encargado.genero}}</p>
                     <p>{{encargado.correo}}</p>
                     <p>{{encargado.telefono}}</p>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
-<div class="card text-center w-75 mt-5" style="margin-left: 10%;">
+
+<div class="card text-center mt-5">
     <div class="card-header" style="background-color: white; border: none; color:black;">
         <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item w-25" routerLinkActive="active">
+            <li class="nav-item w-50" routerLinkActive="active">
                 <a class="nav-link active" data-bs-toggle="tab" href="#departamentos">Departamentos</a>
             </li>
-            <li class="nav-item w-25" routerLinkActive="active">
+            <li class="nav-item w-50" routerLinkActive="active">
                 <a class="nav-link" data-bs-toggle="tab" href="#trabajadores">Trabajadores</a>
             </li>
         </ul>
-
     </div>
     <div class="card-body tab-content">
         <div class="tab-pane active" id="departamentos">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th class="th" scope="col">Departamentos</th>
-                        <th class="th" scope="col">Trabajadores</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let departamento of departamentos | paginate: {id: 'pagination1', itemsPerPage: 5, currentPage: p }; let i = index">
-                        <th scope="row">{{departamento.nombre | uppercase}}</th>
-                        <td>{{trabajadores_num[i]}} Trabajadores</td>
-                    </tr>
-                    <tr>
-
-
-            </table>
-            <div class="d-flex justify-content-center">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="th" scope="col">Departamentos</th>
+                            <th class="th" scope="col">Trabajadores</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let departamento of departamentos | paginate: {id: 'pagination1', itemsPerPage: 5, currentPage: p }; let i = index">
+                            <th scope="row">{{departamento.nombre | uppercase}}</th>
+                            <td>{{trabajadores_num[i]}} Trabajadores</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
                 <pagination-controls id="pagination1" (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
             </div>
         </div>
         <div class="tab-pane" id="trabajadores">
             <div class="table-responsive">
-
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -133,10 +130,10 @@
                             <td>{{trabajador.dias_laborales}}</td>
                             <td>{{trabajador.telefono}}</td>
                         </tr>
-                        <tr>
+                    </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center mt-3">
                 <pagination-controls id="pagination2" (pageChange)="p2 = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
             </div>
         </div>

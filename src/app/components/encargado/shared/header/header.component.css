@@ -1,3 +1,14 @@
 .button {
     background-color: #E6501E;
 }
+
+@media screen and (max-width:450px) {
+    .button {
+        width: 15vw;
+        font-size: 0.55rem;
+    }
+    .img-logout {
+        width: 10px;
+        height: 10px;
+    }
+}

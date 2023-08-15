@@ -9,6 +9,7 @@ import { Supermercado } from '../../interfaces/supermercado.interface';
 })
 export class SupermercadosComponent implements OnInit {
   p: number = 1;
+  items:number=5;
   supermercados:Supermercado[]=[]
   constructor(private adminService:AdminService){}
 
@@ -24,6 +25,11 @@ export class SupermercadosComponent implements OnInit {
         },
          
         )
+      }
+
+      actualizarItems(items:string){
+        this.items=parseInt(items)
+        console.log(items);
       }
 
 }

@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/services/admin-encargado.service';
 })
 export class EncargadosComponent implements OnInit  {
   p: number = 1;
+  items:number=5;
   encargados:Encargado[]=[];
   sideNavStatus:boolean=false;
   constructor(private adminService:AdminService){ }
@@ -26,6 +27,11 @@ this.getEncargados()
     },
      
     )
+  }
+  
+  actualizarItems(items:string){
+    this.items=parseInt(items)
+    console.log(items);
   }
 
 

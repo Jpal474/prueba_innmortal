@@ -13,6 +13,8 @@ export class TokenInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('interceptor');
+    
     const token = localStorage.getItem('token');
     if (token) {
       request = request.clone({
@@ -21,6 +23,8 @@ export class TokenInterceptorService implements HttpInterceptor {
         },
       });
     }
+    console.log('interceptor 2');
+    
     return next.handle(request).pipe(
       catchError((err) => {
         if (err.status === 401) {

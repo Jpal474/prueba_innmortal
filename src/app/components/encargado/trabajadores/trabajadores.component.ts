@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EncargadoService } from 'src/app/services/encargado.service';
 import { Trabajador } from '../../admin/interfaces/trabajador.interface';
 import Swal from 'sweetalert2';
@@ -10,8 +10,9 @@ import { Departamento } from '../../admin/interfaces/departamento.interface';
   templateUrl: './trabajadores.component.html',
   styleUrls: ['./trabajadores.component.css']
 })
-export class TrabajadoresComponent {
+export class TrabajadoresComponent implements OnInit{
 p:number=1;
+items:number=5;
 trabajadores:Trabajador[]=[]
 departamentos:Departamento[]=[]
   constructor(private encargadoService:EncargadoService){
@@ -24,9 +25,11 @@ departamentos:Departamento[]=[]
       }
 
       getTrabajadores(){
+        if(localStorage.getItem('id_supermercado') !== null){
         this.encargadoService.getDepartamentosBySuperId(localStorage.getItem('id_supermercado')!)
         .subscribe((res:Departamento[]) => {
                     this.departamentos=res
+                    if(res.length!==0){
                     for (let index = 0; index < this.departamentos.length; index++) {
                       this.encargadoService.getTrabajadores(this.departamentos[index].id!)
                       .subscribe((res:Trabajador[]) => {
@@ -37,9 +40,21 @@ departamentos:Departamento[]=[]
                             console.log(this.trabajadores);
                       })//cierre del subcribe del trabajador
                       
+                    }}
+                    else{
+                      Swal.fire({
+                        icon: 'warning',
+                        text: 'No hay trabajadores por mostrar!',
+                      })
                     }
         })//cierre del subscribe del departamento
-      
+        }
+        else{
+          Swal.fire({
+            icon: 'warning',
+            text: 'No hay trabajadores por mostrar!',
+          })
+        }
         
       }
       eliminarTrabajador(id: string): void {
@@ -65,9 +80,19 @@ departamentos:Departamento[]=[]
                   window.location.reload();
                }, 2000);
               },
-              error: (e) => console.error(e),
+              error: (e) => {
+                Swal.fire({
+                  icon: 'error',
+                  text: e,
+                })
+              }
           })
           }
         })
+      }
+
+      actualizarItems(items:string){
+        this.items=parseInt(items)
+        console.log(items);
       }
 }

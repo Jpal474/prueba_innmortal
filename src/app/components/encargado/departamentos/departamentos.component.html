@@ -4,6 +4,16 @@
     <button class="btn btn-primary" (click)="guardarDepartamento()">AGREGAR DEPARTAMENTO</button>
 </div>
 
+<div class="d-grid gap-2 col-8 mx-auto justify-content-md-end mt-3">
+    <label>Items Por Página</label>
+    <select class="form-select w-50" aria-label="Default select example" #item (change)="actualizarItems(item.value)">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5" selected>5</option>
+      </select>
+</div>
 
 <div class="row justify-content-center mt-5">
     <div class="col-*-*">
@@ -16,7 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let departamento of departamentos | paginate: { itemsPerPage: 5, currentPage: p }">
+                    <tr *ngFor="let departamento of departamentos | paginate: { itemsPerPage: items, currentPage: p }">
                         <th scope="row">{{departamento.nombre | uppercase }}</th>
                         <td>
                             <a type="button" class="btn button text-white" (click)="eliminarDepartamento(departamento.id)">Eliminar</a>

@@ -97,7 +97,12 @@ ngOnInit(): void {
             text: 'El nuevo Trabajador Ha Sido Editado Con Éxito!',
           })
         },
-        error: (e) => console.error(e),
+        error: (e) => {
+          Swal.fire({
+            icon: 'error',
+            text: e,
+          })
+        }
     })
       
     })

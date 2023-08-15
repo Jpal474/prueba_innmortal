@@ -44,5 +44,4 @@ export class AdminService {
   getSupermercado(parametro:string | Encargado): Observable<Supermercado>{
     return this.httpClient.get<Supermercado>(`${this.BASE_URL}/supermercados/${parametro}`)
   }
-
 }

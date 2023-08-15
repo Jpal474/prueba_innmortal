@@ -6,6 +6,7 @@ import { Departamento } from 'src/app/interfaces/departamento.interface';
 import { Trabajador } from 'src/app/interfaces/trabajador.interface';
 import { EncargadoService } from 'src/app/services/encargado.service';
 import { Encargado, EncargadoGenero } from 'src/app/interfaces/encargados.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detallessupermercado',
@@ -36,8 +37,10 @@ encargado:Encargado={
   fecha_nacimiento:'',
   correo:'',
   telefono:'',
+  imagen:'',
   contraseña:''
 }
+imgURL !:string
 departamentos:Departamento[]=[]
 trabajadores:Trabajador[]=[]
 trabajadores_num:Number[]=[]
@@ -69,15 +72,37 @@ getEncargado(){
   .subscribe({
     next: (res:Encargado) => {
       this.encargado=res
+      if(res.imagen !== null){
+      const blob = this.base64ToBlob(res.imagen!, "image/png")
+      console.log(blob);
+       const imgFile:File = new File([blob], 'imagen.png');
+       this.imgURL = URL.createObjectURL(imgFile);
+      }
+      else{
+        this.imgURL= "../../../../../assets/recursos/super-admin/CARD ENCARGADO/avatar_encargado.svg"
+      }
+
       console.log(`Encargado ${this.encargado}`)
+    },
+    error: (e) => {
+      Swal.fire({
+        icon: 'error',
+        text: e,
+      })
     }
   })
 }
 }
 
+base64ToBlob(base64String: string, mimeType: string): Blob {
+  const byteCharacters = atob(base64String);
+  const byteArrays = new Uint8Array(byteCharacters.length);
 
-
-
+  for (let i = 0; i < byteCharacters.length; i++) {
+    byteArrays[i] = byteCharacters.charCodeAt(i);
+  }
+  return new Blob([byteArrays], { type: mimeType });
+}
 getDepartamentos(){
   const params = this.activadedRoute.snapshot.params;
   if(params){
@@ -87,7 +112,12 @@ this.encargadoService.getDepartamentosBySuperId(params['id'])
     this.departamentos=res;
     this.getTrabajadores(this.departamentos)
   },
-  error: (e) => console.error(e),
+  error: (e) => {
+    Swal.fire({
+      icon: 'error',
+      text: e,
+    })
+  }
 })
 }
 }
@@ -104,6 +134,12 @@ getTrabajadores(dptos:Departamento[]){
         
         console.log(`Trabajadores ${this.trabajadores}`);
         console.log(`Numero de Trabajadores ${this.trabajadores_num}`)
+      },
+      error: (e) => {
+        Swal.fire({
+          icon: 'error',
+          text: e,
+        })
       }
     })
     
