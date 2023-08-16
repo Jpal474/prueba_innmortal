@@ -9,6 +9,12 @@
     height: 200px;
 }
 
+.alert {
+    width: 30vw;
+    position: absolute;
+    right: 0;
+}
+
 .input-group label {
     position: absolute;
     top: 50%;

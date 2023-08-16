@@ -63,6 +63,7 @@ export class LoginComponent {
         localStorage.setItem('usuario', usuario.correo)
         localStorage.setItem('id_usuario', usuario.id)
         localStorage.setItem('tipo', usuario.tipo)
+        localStorage.setItem('verificado', usuario.verificado.toString())
         Swal.fire({
           title: `Bienvenido(a) ${usuario.correo}`,
           showClass: {

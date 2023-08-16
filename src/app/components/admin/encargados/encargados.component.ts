@@ -11,9 +11,16 @@ import { AdminService } from 'src/app/services/admin-encargado.service';
 export class EncargadosComponent implements OnInit  {
   p: number = 1;
   items:number=5;
+  verificado:boolean=false;
   encargados:Encargado[]=[];
   sideNavStatus:boolean=false;
-  constructor(private adminService:AdminService){ }
+  constructor(private adminService:AdminService){ 
+    if(localStorage.getItem('verificado') !== null){
+      if(localStorage.getItem('verificado') === 'true'){
+        this.verificado=true;
+      }
+    }
+  }
 
   ngOnInit(): void {
 this.getEncargados()

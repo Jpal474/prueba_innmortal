@@ -15,6 +15,12 @@
       </select>
 </div>
 
+<br>
+
+<div class="alert alert-warning mb-5" role="alert" *ngIf="verificado == false">
+    Por favor, <a [routerLink]="['/verificar']" class="link-secondary">verifique su cuenta</a> para continuar
+</div>
+
 <div class="row justify-content-center mt-5">
     <div class="col-*-*">
         <div class="table-responsive mt-5" style="margin-left: 10%;">

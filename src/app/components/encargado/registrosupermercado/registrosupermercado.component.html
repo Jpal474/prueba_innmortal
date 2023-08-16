@@ -1,93 +1,99 @@
 <h1 class="text-center mt-5">Registro de Supermercado</h1>
 <a style="color:#0055aa " [routerLink]="['/encargado/departamentos']"> <img src="../../../../../assets/recursos/super-admin/ICONOS GENERALES/regresar.svg" style="width: 30px; height: 30px;"> Regresar </a>
 
-<div class="card mt-5 h-120" style=" margin-left: 15%;">
-    <div class="card-body">
-        <div class="container">
-            <p>Los campos con (*) son obligatorios</p><br><br>
-            <form autocomplete="off" [formGroup]="supermercado_formulario" (ngSubmit)="guardarSupermercado()" class="mt-2">
-                <div class="form-group row">
-                    <div class="col-6 col-sm-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control shadow-none" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+<div class="alert alert-warning mb-5" role="alert" *ngIf="verificado == false">
+    Por favor, <a [routerLink]="['/verificar']" class="link-secondary">verifique su cuenta</a> para continuar
+</div>
 
-                            <label>Nombre Supermercado<span>*</span></label>
+<div class="container align-items-center" id="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <p>Los campos con (*) son obligatorios</p><br><br>
+                <form autocomplete="off" [formGroup]="supermercado_formulario" (ngSubmit)="guardarSupermercado()" class="mt-2">
+                    <div class="form-group row">
+                        <div class="col-6 col-sm-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="nombre" [class.is-invalid]="nombreNoValido">
+
+                                <label>Nombre Supermercado<span>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="calle" [class.is-invalid]="calleNoValido">
+
+                                <label>Calle<span>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" formControlName="numero" [class.is-invalid]="numeroNoValido">
+
+                                <label>Numero<span>*</span></label>
+                            </div>
+
+                            <small *ngIf="numeroNoValido" class="text-danger"> {{numeroNoValido}} </small>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <div class="col-6 col-sm-3">
+                                <div class="input-group">
+                                    <input type="number" class="form-control shadow-none" formControlName="codigo_postal" [class.is-invalid]="codigoPostalNoValido">
+                                    <label>Codigo Postal<span>*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" formControlName="colonia" [class.is-invalid]="coloniaNoValida">
+                                    <label>Colonia/Delegacion<span>*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control shadow-none" formControlName="estado" [class.is-invalid]="estadoNoValido">
+                                    <label>Estado<span>*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="ciudad" [class.is-invalid]="ciudadNoValido">
+
+                                    <label>Ciudad<span>*</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <div class="col-6 col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="razon_social" [class.is-invalid]="razonSocialNoValida">
+                                    <label>Razón Social<span>*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="correo" [class.is-invalid]="correoNoValido">
+
+                                    <label>Correo Electrónico<span>*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-3">
+                                <div class="input-group">
+                                    <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
+
+                                    <label>Teléfono<span>*</span></label>
+                                </div>
+
+                                <small *ngIf="telefonoNoValido" class="text-danger"> {{telefonoNoValido}} </small>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <button type="submit" class="btn btn-success w-50 p3 " style="margin-left: 18%;">Registrar</button>
                         </div>
                     </div>
-                    <div class="col-6 col-sm-3">
-
-                        <div class="input-group">
-                            <input type="text" class="form-control shadow-none" formControlName="calle" [class.is-invalid]="calleNoValido">
-
-                            <label>Calle<span>*</span></label>
-                        </div>
-                    </div>
-                    <div class="col-6 col-sm-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control shadow-none" formControlName="numero" [class.is-invalid]="numeroNoValido">
-
-                            <label>Numero<span>*</span></label>
-                        </div>
-
-                        <small *ngIf="numeroNoValido" class="text-danger"> {{numeroNoValido}} </small>
-                    </div>
-                    <div class="form-group row mt-4">
-                        <div class="col-6 col-sm-3">
-                            <div class="input-group">
-                                <input type="number" class="form-control shadow-none" formControlName="codigo_postal" [class.is-invalid]="codigoPostalNoValido">
-                                <label>Codigo Postal<span>*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" formControlName="colonia" [class.is-invalid]="coloniaNoValida">
-                                <label>Colonia/Delegacion<span>*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control shadow-none" formControlName="estado" [class.is-invalid]="estadoNoValido">
-                                <label>Estado<span>*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-3">
-
-                            <div class="input-group">
-                                <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="ciudad" [class.is-invalid]="ciudadNoValido">
-
-                                <label>Ciudad<span>*</span></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-4">
-                        <div class="col-6 col-sm-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="razon_social" [class.is-invalid]="razonSocialNoValida">
-                                <label>Razón Social<span>*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="correo" [class.is-invalid]="correoNoValido">
-
-                                <label>Correo Electrónico<span>*</span></label>
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="telefono" [class.is-invalid]="telefonoNoValido">
-
-                                <label>Teléfono<span>*</span></label>
-                            </div>
-
-                            <small *ngIf="telefonoNoValido" class="text-danger"> {{telefonoNoValido}} </small>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-4">
-                        <button type="submit" class="btn btn-success w-50 p3 " style="margin-left: 18%;">Registrar</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

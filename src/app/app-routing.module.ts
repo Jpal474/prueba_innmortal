@@ -9,9 +9,11 @@ import { ENCARGADO_ROUTES } from './components/encargado/encargado/encargado.rou
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 import { encargadoGuard } from './guards/encargado.guard';
+import { VerificarComponent } from './components/verificar/verificar.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'verificar', component: VerificarComponent },
   {path:'landing', component: PlataformaComponent,},
   {path:'admin', component: AdminComponent, canActivate:[authGuard, adminGuard] ,children:ADMIN_ROUTES},
   {path:'encargado', component: EncargadoComponent,canActivate:[authGuard, encargadoGuard], children:ENCARGADO_ROUTES},

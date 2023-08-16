@@ -11,3 +11,9 @@
     width: 60%;
     margin-left: 12%;
 }
+
+.alert {
+    width: 30vw;
+    position: absolute;
+    right: 0;
+}

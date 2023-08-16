@@ -2,6 +2,7 @@ import { CanActivateFn } from '@angular/router';
 
 import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn:'root'
@@ -18,6 +19,10 @@ class PermissionsToken {
     }
     else{
     this.router.navigate(['/login'])
+    Swal.fire({
+      icon: 'warning',
+      text: 'Su Sesión Ha Expirado, Inicie Sesión De Nuevo',
+    })
     return false;
   }
 }

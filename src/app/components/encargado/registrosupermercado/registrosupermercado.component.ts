@@ -24,10 +24,15 @@ export class RegistrosupermercadoComponent implements OnInit{
     correo:'',
     telefono:'',
   }
+  verificado:boolean = false;
   constructor(private fb:FormBuilder,
     private encargadoService:EncargadoService,
     private router:Router){
-    
+    if(localStorage.getItem('verificado') !== null){
+      if(localStorage.getItem('verificado') === 'true'){
+        this.verificado=true;
+      }
+    }
   }
   ngOnInit(): void {
     this.crearFormulario()

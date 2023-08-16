@@ -14,6 +14,7 @@ import { DepartamentoSupermercado } from '../../admin/interfaces/departamento-su
 export class DepartamentosComponent implements OnInit{
   p: number = 1;
   items:number=5;
+  verificado: boolean = false;
   departamento_supermercado:DepartamentoSupermercado={
     nombre:'',
     supermercado:{id:'',
@@ -31,7 +32,14 @@ export class DepartamentosComponent implements OnInit{
  departamentos!:Departamento[]
 constructor(
   private encargadoService:EncargadoService,
-  private adminService:AdminService){}
+  private adminService:AdminService
+  ){
+    if(localStorage.getItem('verificado') !== null){
+      if(localStorage.getItem('verificado') === 'true'){
+        this.verificado=true;
+      }
+    }
+  }
 
   ngOnInit(): void {
     this.getDepartamentos()

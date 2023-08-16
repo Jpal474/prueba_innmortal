@@ -1,10 +1,20 @@
 .card {
-    width: auto;
+    width: 70vw;
     height: auto;
+}
+
+#container {
+    margin-top: 5%;
 }
 
 span {
     color: red;
+}
+
+.alert {
+    width: 30vw;
+    position: absolute;
+    right: 0;
 }
 
 .input-group label {

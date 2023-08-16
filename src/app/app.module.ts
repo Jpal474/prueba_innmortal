@@ -9,11 +9,13 @@ import { EncargadoModule } from './components/encargado/encargado/encargado.modu
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { LandingModule } from './components/general/landing/landing.module';
 import { CuentaComponent } from './components/encargado/cuenta/cuenta.component';
+import { VerificarComponent } from './components/verificar/verificar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CuentaComponent,
+    VerificarComponent,
   ],
   imports: [
     BrowserModule,
