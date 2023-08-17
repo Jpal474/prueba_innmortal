@@ -40,12 +40,12 @@ export class RegistrosupermercadoComponent implements OnInit{
   crearFormulario(){
   this.supermercado_formulario=this.fb.group({
     nombre:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
-    calle:['', [Validators.required, Validators.pattern('^[a-zA-Z0-9\s,]+$')]],
+    calle:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s,]+$/)]],
     numero:[0, [Validators.required, Validators.pattern('^\\d+(?:-[A-Z])?$')]],
     codigo_postal:[0, [Validators.required, Validators.pattern(/^\d+$/)]],
     colonia:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
-    estado:['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
-    ciudad:['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
+    estado:['', [Validators.required, Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/)]],
+    ciudad:['', [Validators.required, Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/)]],
     razon_social:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
     correo:['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
     telefono:['', [Validators.required, Validators.pattern(/^\(\d{3}\)-\d{3}-\d{4}$/)]],

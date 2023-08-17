@@ -16,6 +16,8 @@ import Swal from 'sweetalert2';
 export class DetallessupermercadoComponent implements OnInit{
 p: number = 1;
 p2: number = 1;
+items:number=5;
+items2:number=5;
 supermercado:Supermercado={
   nombre: '',
   calle: '',
@@ -144,6 +146,14 @@ getTrabajadores(dptos:Departamento[]){
     })
     
   }
+}
+actualizarItems(items:string){
+  this.items=parseInt(items)
+  console.log(items);
+}
+actualizarItems2(items:string){
+  this.items2=parseInt(items)
+  console.log(items);
 }
 
 }//cierre de clase
