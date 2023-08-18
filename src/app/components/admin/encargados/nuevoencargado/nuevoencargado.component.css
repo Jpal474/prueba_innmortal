@@ -5,6 +5,11 @@ p {
     top: 10px;
 }
 
+.btn {
+    background-color: #198754;
+    color: white;
+}
+
 .input-group label {
     position: absolute;
     top: 50%;
@@ -33,8 +38,8 @@ span {
 }
 
 .card {
-    width: 80vw;
-    height: 50vh;
+    width: auto;
+    height: auto;
 }
 
 @media screen and (max-width:900px) {

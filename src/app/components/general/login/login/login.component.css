@@ -37,8 +37,9 @@ p {
     margin-top: 10%;
 }
 
-.btn {
+.card .btn {
     background-color: #002b55;
+    color: white;
 }
 
 .input-group label {

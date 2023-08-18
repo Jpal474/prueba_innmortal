@@ -168,6 +168,13 @@ getTrabajadores(dptos:Departamento[]){
     .subscribe({
       next: (res:any) => {
         console.log(res)
+      },
+      error: (e) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e,
+        })
       }
     })
   }

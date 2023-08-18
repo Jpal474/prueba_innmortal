@@ -56,8 +56,8 @@ export class NuevoencargadoComponent {
       this.encargado.tipo='encargado'
       console.log(this.encargado)
       this.adminEncargadoService.createEncargado(this.encargado)
-      .subscribe(
-        res=>{
+      .subscribe({
+       next: (res:Encargado) => {
           Swal.fire({
             icon: 'success',
             title: 'Registro Terminado',
@@ -65,8 +65,14 @@ export class NuevoencargadoComponent {
           })
           this.router.navigate([`/admin/inicio`]);
         },
-        err=>console.log(err)
-      )
+        error: err=> {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: err,
+          })
+        }
+    })
     }
     else{
       return Object.values( this.encargado_formulario.controls ).forEach( control => {

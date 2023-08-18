@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin-encargado.service';
 import { Supermercado } from '../../interfaces/supermercado.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-supermercados',
@@ -19,12 +20,20 @@ export class SupermercadosComponent implements OnInit {
       }
       getSupermercados(){ 
         this.adminService.getSupermercados()
-        .subscribe((res:Supermercado[])=>{
+        .subscribe({
+          next: (res:Supermercado[])=>{
           this.supermercados=res
           console.log(res)
         },
+        error: (e) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: e,
+          })
+        }
          
-        )
+      })
       }
 
       actualizarItems(items:string){

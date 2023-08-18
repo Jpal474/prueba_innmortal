@@ -89,23 +89,42 @@ constructor(
     if (departamento && localStorage.getItem('id_supermercado')!==null) {
       console.log(`Departamento Registrado: ${departamento}`)
       this.adminService.getSupermercado(localStorage.getItem('id_supermercado')!)
-      .subscribe((res:Supermercado) => {
+      .subscribe({
+        next:(res:Supermercado) => {
         console.log(`Respuesta Res ${res.id}`)
         this.departamento_supermercado.supermercado=res;
         this.departamento_supermercado.nombre=departamento.toLowerCase();
       console.log(`Departamento: ${this.departamento_supermercado.nombre}`)
       console.log(`Supermercado: ${this.departamento_supermercado.supermercado}`)
       this.encargadoService.createDepartamento(this.departamento_supermercado)
-              .subscribe((res:Departamento)=>{
+              .subscribe({
+                next: (res:Departamento)=>{
                 Swal.fire(`Departamento Registrado: ${departamento}`)
                 setTimeout(function(){
                   window.location.reload();
                }, 2000);
+              },
+            error: (e) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: e,
               })
+            }
+            })
               
     
     
-      });
+      },
+    error: (e) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: e,
+        footer: '<a href="">Why do I have this issue?</a>'
+      })
+    }
+    });
       
     }
     if(departamento && localStorage.getItem('id_supermercado') === null){
@@ -137,7 +156,9 @@ constructor(
     }).then((result) => {
       if (result.isConfirmed) {
         this.encargadoService.deleteDepartamento(departamentoid)
-        .subscribe((res:Departamento) => {
+        .subscribe({
+          next: (res:boolean) => {
+            if(res){
           swalWithBootstrapButtons.fire(
             'Borrado!',
             'El Departamento Ha Sido Eliminado',
@@ -146,7 +167,16 @@ constructor(
           setTimeout(function(){
             window.location.reload();
          }, 2000);
-        })
+        }//cierre del if
+        },
+        error: (e) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: e,
+          })
+        }
+      })
        
       } else if (
         /* Read more about handling dismissals below */

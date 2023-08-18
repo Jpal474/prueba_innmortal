@@ -78,11 +78,13 @@ getDepartamentos(){
     if(this.departamentos !== null){
       console.log(`Nombre del Departamento ${this.trabajador_departamento_formulario.value.departamento.toLowerCase()}`)
       this.encargadoService.getDepartamentoByNombre(this.trabajador_departamento_formulario.value.departamento.toLowerCase())
-        .subscribe((res:Departamento) => {
+        .subscribe({
+          next: (res:Departamento) => {
           console.log(`departamento ${res}`)
           this.trabajador_departamento.departamento=res
           this.encargadoService.createTrabajador(this.trabajador_departamento)
-              .subscribe((res:Trabajador) => {
+              .subscribe({
+                next: (res:Trabajador) => {
               Swal.fire({
               icon: 'success',
               title: 'Registro Terminado',
@@ -91,9 +93,23 @@ getDepartamentos(){
                 this.router.navigate([`/encargado/trabajadores`])
               }
               ,
-              err=>console.log(err)
-        )
-    })
+              error: (err) => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: err,
+                })
+              }
+            })
+    },
+    error: (e) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: e,
+            })
+    }
+  })
   }
   else{
     Swal.fire({

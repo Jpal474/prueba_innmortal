@@ -32,13 +32,14 @@ span {
     margin-top: 35px;
 }
 
-.input-group {
-    width: 80%;
+.card {
+    width: 60vw;
+    height: auto;
 }
 
-.card {
-    width: auto;
-    height: auto;
+.card .btn {
+    background-color: #198754;
+    color: white;
 }
 
 @media screen and (max-width:900px) {

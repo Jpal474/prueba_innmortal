@@ -42,8 +42,8 @@ export class EncargadoService {
     return this.httpClient.post<Departamento>(`${this.BASE_URL}/departamentos`, departamento )
   }
 
-  deleteDepartamento(id : string | undefined):Observable<Departamento>{
-    return this.httpClient.delete<Departamento>(`${this.BASE_URL}/departamentos/${id}`);
+  deleteDepartamento(id : string | undefined):Observable<boolean>{
+    return this.httpClient.delete<boolean>(`${this.BASE_URL}/departamentos/${id}`);
   }
 
   getTrabajadores(id:string): Observable<Trabajador[]>{
@@ -62,9 +62,9 @@ export class EncargadoService {
     //la cual buscará a mi encargado a través de su id para después actualizar sus datos
   }
 
-   deleteTrabajador(id: string): Observable<Trabajador> {
+   deleteTrabajador(id: string): Observable<boolean> {
     console.log(id);
-    return this.httpClient.delete<Trabajador>(`${this.BASE_URL}/trabajadores/${id}`);
+    return this.httpClient.delete<boolean>(`${this.BASE_URL}/trabajadores/${id}`);
   }
 
   uploadImagenPerfil(id: string, file: File): Observable<Encargado> {

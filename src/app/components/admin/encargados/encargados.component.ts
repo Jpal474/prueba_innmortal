@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Encargado } from '../interfaces/encargados.interface';
 import { AdminService } from 'src/app/services/admin-encargado.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -28,12 +29,20 @@ this.getEncargados()
   }
   getEncargados(){ 
     this.adminService.getEncargados()
-    .subscribe((res:Encargado[])=>{
+    .subscribe({
+      next: (res:Encargado[])=>{
       this.encargados=res
       console.log(res)
     },
+    error(e){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: e,
+      })
+    }
      
-    )
+  })
   }
   
   actualizarItems(items:string){

@@ -41,8 +41,8 @@ ngOnInit(): void {
   const params = this.activadedRoute.snapshot.params;
   if(params){
     this.encargadoService.getTrabajador(params['id'])
-    .subscribe((res:Trabajador)=>{
-      // console.log(res)
+    .subscribe({
+      next:(res:Trabajador)=>{
       this.trabajador_formulario.patchValue({
         id:res.id,
     nombre:res.nombre,
@@ -51,7 +51,15 @@ ngOnInit(): void {
     telefono:res.telefono,
     departamento:res.departamento?.nombre
       })
+    },
+  error: (e) => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: e,
     })
+  }
+  })
   }
 }
 
@@ -86,7 +94,8 @@ ngOnInit(): void {
     this.trabajador=this.trabajador_formulario.value;
     console.log(this.trabajador)
     this.encargadoService.getDepartamentoByNombre(this.trabajador_formulario.value.departamento.toLowerCase())
-    .subscribe((res:Departamento) => {
+    .subscribe({
+      next: (res:Departamento) => {
       this.trabajador.departamento=res
       this.encargadoService.updateTrabajador(params['id'],this.trabajador)
       .subscribe({
@@ -105,7 +114,15 @@ ngOnInit(): void {
         }
     })
       
+    }, 
+  error: (e) => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: e,
     })
+  }
+  })
     this.router.navigate(['/encargado/trabajadores'])
   }
   else{

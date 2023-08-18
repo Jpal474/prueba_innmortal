@@ -27,18 +27,28 @@ departamentos:Departamento[]=[]
       getTrabajadores(){
         if(localStorage.getItem('id_supermercado') !== null){
         this.encargadoService.getDepartamentosBySuperId(localStorage.getItem('id_supermercado')!)
-        .subscribe((res:Departamento[]) => {
+        .subscribe({
+          next: (res:Departamento[]) => {
                     this.departamentos=res
                     if(res.length!==0){
                     for (let index = 0; index < this.departamentos.length; index++) {
                       this.encargadoService.getTrabajadores(this.departamentos[index].id!)
-                      .subscribe((res:Trabajador[]) => {
+                      .subscribe({
+                        next: (res:Trabajador[]) => {
                             for (let j=0; j<res.length;j++){
                               this.trabajadores.push(res[j])
                             }
                             
                             console.log(this.trabajadores);
-                      })//cierre del subcribe del trabajador
+                      },
+                      error: (e) => {
+                        Swal.fire({
+                          icon: 'error',
+                          title: 'Error',
+                          text: e,
+                        })
+                      }
+                    })//cierre del subcribe del trabajador
                       
                     }}
                     else{
@@ -47,7 +57,15 @@ departamentos:Departamento[]=[]
                         text: 'No hay trabajadores por mostrar!',
                       })
                     }
-        })//cierre del subscribe del departamento
+        },
+      error: (e) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e,
+        })
+      } 
+      })//cierre del subscribe del departamento
         }
         else{
           Swal.fire({
@@ -70,7 +88,8 @@ departamentos:Departamento[]=[]
           if (result.isConfirmed) {
             this.encargadoService.deleteTrabajador(id)
             .subscribe({
-              next: (v) => {
+              next: (res:boolean) => {
+                if(res){
                 Swal.fire({
                   icon: 'success',
                   title: 'Trabajador Eliminado',
@@ -79,7 +98,9 @@ departamentos:Departamento[]=[]
                 setTimeout(function(){
                   window.location.reload();
                }, 2000);
-              },
+              }//cierre del if
+            }
+              ,
               error: (e) => {
                 Swal.fire({
                   icon: 'error',

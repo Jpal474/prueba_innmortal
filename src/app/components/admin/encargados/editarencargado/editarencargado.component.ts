@@ -35,7 +35,8 @@ ngOnInit(): void {
   const params = this.activadedRoute.snapshot.params;
   if(params){
     this.adminEncargadoService.getEncargadoById(params['id'])
-    .subscribe((res:Encargado)=>{
+    .subscribe({
+      next:(res:Encargado)=>{
       console.log('Encargado')
       console.log(res)
       this.encargado_formulario.patchValue({
@@ -50,7 +51,15 @@ ngOnInit(): void {
       })
 
       console.log(res.nombre)
+    },
+  error: (e) => {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: e,
     })
+  } //ciere del subscribe
+  })
   }
 }
 
@@ -94,13 +103,24 @@ crearFormulario(){
     }).then((result) => {
       if (result.isConfirmed) {
         this.adminEncargadoService.updateEncargado(params['id'],this.encargado)
-        .subscribe((res:Encargado)=>{
+        .subscribe({
+          next: (res:Encargado)=>{
         Swal.fire(
           'Éxito!',
           'El encargado ha sido actualizado.',
           'success'
         )
-      })
+      },
+      error: (e) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e,
+        })
+      }
+    
+    
+    })
       this.router.navigate([`/admin/inicio`]);
       }
     })

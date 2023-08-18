@@ -57,12 +57,18 @@ trabajadores_num:Number[]=[]
     const params = this.activadedRoute.snapshot.params;
     if(params){
       this.adminService.getSupermercado(params['id'])
-      .subscribe((res:Supermercado)=>{
+      .subscribe({
+        next: (res:Supermercado)=>{
+          console.log('Supermercado ------')
         console.log(res)
         this.supermercado=res;
         this.getEncargado()
         this.getDepartamentos()
-      })
+      },
+      error: (e) => {
+        console.log(e)
+      }
+    })
     }
 
 }//cierre de oninit

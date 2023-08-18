@@ -19,25 +19,16 @@ import Swal from 'sweetalert2';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   imagen = '../../../../../assets/recursos/login/IMAGENES/login-wallpaper.jpg';
   usuario_formulario!: FormGroup;
   usuarioNotFound!:string
   passwordInvalid!:string
-  // usuario_storage:Encargado={
-  // id:'',
-  // nombre:'',
-  // apellido_paterno:'',
-  // apellido_materno:'',
-  // genero:EncargadoGenero.FEMENINO,
-  // fecha_nacimiento:'',
-  // correo:'',
-  // telefono:'',
-  // contraseña:''         
-  //  }
   constructor(private fb: FormBuilder, private authService: AuthService, private router:Router, private adminService:AdminService) {
+  }
+
+  ngOnInit(): void {
     this.crearFormulario();
   }
   crearFormulario() {
@@ -75,7 +66,8 @@ export class LoginComponent {
         })
         if(usuario.tipo==='encargado'){//si mi usuario es de tipo Encargado
          this.adminService.getEncargadoById(usuario.id!) //lo busca en la bd
-        .subscribe((res:Encargado)=>{
+        .subscribe({
+          next: (res:Encargado)=>{
           const encargado=res;
           if(encargado.supermercado!=null){//verifica que tenga un supermercado registrado
             localStorage.setItem('id_supermercado',encargado.supermercado.id!)//guardo el id del supermercado
@@ -84,7 +76,15 @@ export class LoginComponent {
           else{
             this.router.navigate([`/encargado/registrar-supermercado`]);//si no lo tiene, lo manda a registar uno
           }
-        })
+        },
+        error: (e) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: e,
+          })
+        }
+      })
         
       }else{
         this.router.navigate([`/admin/inicio`]);

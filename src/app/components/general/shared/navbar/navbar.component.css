@@ -1,3 +1,21 @@
+.carousel-container {
+    position: relative;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    color: white;
+    text-align: center;
+    width: 80%;
+    /* Ajusta el ancho del caption si es necesario */
+    max-width: 300px;
+    /* Ajusta el ancho máximo del caption si es necesario */
+}
+
 .active-link {
     color: #0d6efd
 }
@@ -6,3 +24,21 @@
     border-color: #002b55;
     border-width: medium;
 }
+
+hr {
+    align-items: center;
+    position: relative;
+    left: 20%;
+    width: 60%;
+    height: 3%;
+    background-color: #fdfdfd;
+}
+
+
+/* .carousel-caption .h1 {
+    font-size: 3rem;
+}
+
+.carousel-caption .h2 {
+    font-size: 1.5rem;
+} */
