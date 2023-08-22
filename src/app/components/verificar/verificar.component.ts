@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class VerificarComponent implements OnInit{
   verificacion_formulario!: FormGroup
   destinatario:Mail ={
-    destinatario:'jexir66865@dusyum.com'
+    destinatario:''
   }
   constructor(
     private authService : AuthService,
@@ -31,6 +31,8 @@ export class VerificarComponent implements OnInit{
   }
 
  enviarMail(){
+  if (localStorage.getItem('usuario') !== null){
+    this.destinatario.destinatario = localStorage.getItem('usuario')!
 this.authService.enviarMail(this.destinatario)
 .subscribe({
   next: (respuesta:string) =>{
@@ -40,6 +42,7 @@ this.authService.enviarMail(this.destinatario)
     console.log(e);
   }
 })
+}
  }
 
  verificar(){
@@ -47,6 +50,7 @@ this.authService.enviarMail(this.destinatario)
   .subscribe({
     next: (res:boolean) => {
       if(res){
+        localStorage.setItem('veririficado', 'true');
         Swal.fire({
           icon: 'success',
           title: 'Verificación Completada',

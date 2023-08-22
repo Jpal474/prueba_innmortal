@@ -34,6 +34,30 @@ hr {
     background-color: #fdfdfd;
 }
 
+@media screen and (max-width:600px) {
+    .navbar {
+        width: auto;
+    }
+    .navbar img {
+        width: 50px;
+    }
+    .navbar a img {
+        width: 20px;
+    }
+    .carousel-caption {
+        transform: translate(-50%, -100%);
+    }
+    .carousel-caption h1 {
+        font-size: medium;
+    }
+    .carousel-caption h2 {
+        font-size: small;
+    }
+    .carousel-caption p {
+        font-size: 0.45rem;
+    }
+}
+
 
 /* .carousel-caption .h1 {
     font-size: 3rem;

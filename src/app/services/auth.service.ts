@@ -38,8 +38,9 @@ public jwtHelper: JwtHelperService = new JwtHelperService();
   logOut(){
     localStorage.removeItem('token')
     localStorage.removeItem('id_supermercado')
-    this.router.navigate(['login'])
     localStorage.clear();
+    this.router.navigate(['login'])
+    
 
     
   }

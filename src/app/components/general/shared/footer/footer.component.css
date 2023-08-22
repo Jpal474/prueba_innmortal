@@ -26,7 +26,7 @@
     height: 200px;
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:900px) and (min-width:601px) {
     .img-footer {
         width: 10px;
     }
@@ -47,5 +47,43 @@
     #myFooter p {
         font-size: 10px;
         color: white;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .img-footer {
+        width: 10px;
+    }
+    #ulLi a {
+        font-size: 10px;
+    }
+    #myFooter {
+        height: auto;
+    }
+    #ulLi a::after {
+        content: "\a";
+        white-space: pre;
+    }
+    #myFooter p {
+        font-size: 10px;
+        color: white;
+    }
+    .vr {
+        height: auto;
+    }
+    .text-limit {
+        max-width: 25%;
+    }
+    .container .el3 a {
+        position: absolute;
+        left: 0px;
+        bottom: -163%;
+        font-size: 8px;
+    }
+    .container .el4 a {
+        position: absolute;
+        left: 0px;
+        bottom: -168%;
+        font-size: 8px;
     }
 }
