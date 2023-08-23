@@ -39,8 +39,8 @@ export class RegistrosupermercadoComponent implements OnInit{
   }
   crearFormulario(){
   this.supermercado_formulario=this.fb.group({
-    nombre:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
-    calle:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s,]+$/)]],
+    nombre:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9ZáéíóúÁÉÍÓÚüÜñÑ.\s]+$/)]],
+    calle:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9ZáéíóúÁÉÍÓÚüÜñÑ.\s,]+$/)]],
     numero:[0, [Validators.required, Validators.pattern('^\\d+(?:-[A-Z])?$')]],
     codigo_postal:[0, [Validators.required, Validators.pattern(/^\d+$/)]],
     colonia:['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]],
@@ -59,18 +59,27 @@ export class RegistrosupermercadoComponent implements OnInit{
     this.supermercado=this.supermercado_formulario.value;
     console.log(this.supermercado)
     this.encargadoService.createSupermercado(this.supermercado)
-    .subscribe(
-      res=>{
+    .subscribe({
+      next: (res) =>{
         Swal.fire({
           icon: 'success',
           title: 'Registro Terminado',
           text: 'El nuevo Supermercado Ha Sido Registrado!',
         }),
         localStorage.setItem('id_supermercado', res.id!)
-        this.router.navigate([`/encargado/departamentos`]);//guardo el id de mi supermercado en localstorage
+        setTimeout(() =>{
+          this.router.navigate([`/encargado/departamentos`]);
+       }, 2000);
+        //guardo el id de mi supermercado en localstorage
       },
-      err=>console.log(err)
-    )
+      error: (e) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: e,
+        })
+      }
+    })
 
   
 

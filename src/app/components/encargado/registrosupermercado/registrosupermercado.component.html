@@ -18,6 +18,7 @@
 
                                 <label>Nombre Supermercado<span>*</span></label>
                             </div>
+                            <small *ngIf="nombreNoValido" class="text-danger"> {{nombreNoValido}} </small>
                         </div>
                         <div class="col-6 col-sm-3">
 
@@ -26,6 +27,8 @@
 
                                 <label>Calle<span>*</span></label>
                             </div>
+                            <small *ngIf="calleNoValido" class="text-danger"> {{calleNoValido}} </small>
+
                         </div>
                         <div class="col-6 col-sm-3">
                             <div class="input-group">
@@ -42,18 +45,21 @@
                                     <input type="number" class="form-control shadow-none" formControlName="codigo_postal" [class.is-invalid]="codigoPostalNoValido">
                                     <label>Codigo Postal<span>*</span></label>
                                 </div>
+                                <small *ngIf="codigoPostalNoValido" class="text-danger"> {{codigoPostalNoValido}} </small>
                             </div>
                             <div class="col-6 col-sm-3">
                                 <div class="input-group">
                                     <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" formControlName="colonia" [class.is-invalid]="coloniaNoValida">
                                     <label>Colonia/Delegacion<span>*</span></label>
                                 </div>
+                                <small *ngIf="coloniaNoValida" class="text-danger"> {{coloniaNoValida}} </small>
                             </div>
                             <div class="col-6 col-sm-3">
                                 <div class="input-group">
                                     <input type="text" class="form-control shadow-none" formControlName="estado" [class.is-invalid]="estadoNoValido">
                                     <label>Estado<span>*</span></label>
                                 </div>
+                                <small *ngIf="estadoNoValido" class="text-danger"> {{estadoNoValido}} </small>
                             </div>
                             <div class="col-6 col-sm-3">
 
@@ -62,6 +68,7 @@
 
                                     <label>Ciudad<span>*</span></label>
                                 </div>
+                                <small *ngIf="ciudadNoValido" class="text-danger"> {{ciudadNoValido}} </small>
                             </div>
                         </div>
                         <div class="form-group row mt-4">
@@ -70,6 +77,7 @@
                                     <input type="text" class="form-control shadow-none" aria-label="Dollar amount (with dot and two decimal places)" formControlName="razon_social" [class.is-invalid]="razonSocialNoValida">
                                     <label>Razón Social<span>*</span></label>
                                 </div>
+                                <small *ngIf="razonSocialNoValida" class="text-danger"> {{razonSocialNoValida}} </small>
                             </div>
                             <div class="col-6 col-sm-3">
                                 <div class="input-group">
@@ -77,6 +85,7 @@
 
                                     <label>Correo Electrónico<span>*</span></label>
                                 </div>
+                                <small *ngIf="correoNoValido" class="text-danger"> {{correoNoValido}} </small>
                             </div>
                             <div class="col-6 col-sm-3">
                                 <div class="input-group">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Mail } from 'src/app/interfaces/mail.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
@@ -16,7 +17,8 @@ export class VerificarComponent implements OnInit{
   }
   constructor(
     private authService : AuthService,
-    private fb : FormBuilder
+    private fb : FormBuilder,
+    private router: Router
     ){}
 
  ngOnInit(): void {
@@ -50,12 +52,15 @@ this.authService.enviarMail(this.destinatario)
   .subscribe({
     next: (res:boolean) => {
       if(res){
-        localStorage.setItem('veririficado', 'true');
+       localStorage.setItem('verificado', 'true');
         Swal.fire({
           icon: 'success',
           title: 'Verificación Completada',
           text: 'Su proceso de verificación ha sido completado éxitosamente!',
         })
+        setTimeout(() =>{
+          this.router.navigate([`/encargado/departamentos`]);
+       }, 2000);
       }
     },
     error: (e:string) => {

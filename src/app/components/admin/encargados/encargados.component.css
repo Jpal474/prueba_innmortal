@@ -22,3 +22,9 @@
     position: absolute;
     right: 0;
 }
+
+@media screen and (max-width:600px) {
+    .alert {
+        width: auto;
+    }
+}

@@ -8,5 +8,5 @@
  }
  
  .input-group label {
-     z-index: 100000;
+     z-index: 1;
  }
