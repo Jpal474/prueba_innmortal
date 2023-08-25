@@ -12,6 +12,7 @@ import { SupermercadosComponent } from '../supermercado/supermercados/supermerca
 import { DetallessupermercadoComponent } from '../supermercado/detallessupermercado/detallessupermercado.component';
 import { authGuard } from 'src/app/guards/auth.guard';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask, provideNgxMask } from 'ngx-mask';
 
 
 @NgModule({
@@ -31,6 +32,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ], 
+  exports:[
+    NgxMaskDirective,
+    NgxMaskPipe,
+  ],
+  providers:[
+    provideEnvironmentNgxMask(),
+    provideNgxMask(),
+  ]
 })
 export class AdminModule { }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EncargadoService } from 'src/app/services/encargado.service';
 import { Trabajador } from '../../admin/interfaces/trabajador.interface';
 import Swal from 'sweetalert2';
@@ -40,11 +40,11 @@ export class NuevotrabajadorComponent {
   }
   crearFormulario(){
   this.trabajador_formulario=this.fb.group({
-    id:['', [Validators.required, Validators.pattern(/^FV-\d+$/)]],
-    nombre:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
-    apellidos:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$')]],
+    id:['', [Validators.required, Validators.pattern(/^FV-\d+$/), this.notOnlyWhitespace]],
+    nombre:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$'), this.notOnlyWhitespace]],
+    apellidos:['', [Validators.required, Validators.pattern('^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$'), this.notOnlyWhitespace]],
     dias_laborales:['', Validators.required],
-    telefono:['', [Validators.required, Validators.pattern(/^\(\d{3}\)-\d{3}-\d{4}$/)]],
+    telefono:['', [Validators.required, this.notOnlyWhitespace]],
   
   })
 this.trabajador_departamento_formulario=this.fb.group({
@@ -77,7 +77,7 @@ getDepartamentos(){
     console.log()
     if(this.departamentos !== null){
       console.log(`Nombre del Departamento ${this.trabajador_departamento_formulario.value.departamento.toLowerCase()}`)
-      this.encargadoService.getDepartamentoByNombre(this.trabajador_departamento_formulario.value.departamento.toLowerCase())
+      this.encargadoService.getDepartamentoByNombre(this.trabajador_departamento_formulario.value.departamento.toLowerCase(), localStorage.getItem('id_supermercado')!)
         .subscribe({
           next: (res:Departamento) => {
           console.log(`departamento ${res}`)
@@ -138,6 +138,18 @@ getDepartamentos(){
 
   }
 
+  notOnlyWhitespace(control: AbstractControl) {
+    if (control.value !== null && control.value.trim() === '') {
+      return { notOnlyWhitespace: true };
+    }
+    return null;
+  }
+  
+  get fechaNacimientoControl() {
+    return this.trabajador_formulario.get('fecha_nacimiento');
+  }
+  
+
   get departamentoNoValido(){
     return this.trabajador_formulario.get('departamento')?.invalid && this.trabajador_formulario.get('departamento')?.touched
   }
@@ -150,6 +162,9 @@ get idNoValido(){
   else if(this.trabajador_formulario.get('id')?.errors?.['pattern']){
     mensaje= "El ID deber ser de la forma FV-XXX";
   }
+  else if(this.trabajador_formulario.get('id')?.errors?.['notOnlyWhitespace'] && this.trabajador_formulario.get('id')?.touched) {
+    mensaje= "El campo no puede consistir solo en espacios en blanco.";
+  }
   return mensaje
 }
 
@@ -161,6 +176,9 @@ get nombreNoValido(): String{
   else if(this.trabajador_formulario.get('nombre')?.errors?.['pattern']){
     mensaje= "El nombre no puede contener números o carácteres especiales";
   }
+  else if(this.trabajador_formulario.get('nombre')?.errors?.['notOnlyWhitespace'] && this.trabajador_formulario.get('nombre')?.touched) {
+    mensaje= "El campo no puede consistir solo en espacios en blanco.";
+  }
   return mensaje
 }
 
@@ -171,6 +189,9 @@ get apellidosNoValido(): String{
   }
   else if(this.trabajador_formulario.get('apellidos')?.errors?.['pattern']){
     mensaje= "El/Los apellidos no pueden contener números o carácteres especiales";
+  }
+  else if(this.trabajador_formulario.get('apellidos')?.errors?.['notOnlyWhitespace'] && this.trabajador_formulario.get('apellidos')?.touched) {
+    mensaje= "El campo no puede consistir solo en espacios en blanco.";
   }
   return mensaje
 }
@@ -184,9 +205,8 @@ get telefonoNoValido(){
   if( this.trabajador_formulario.get('telefono')?.errors?.['required'] && this.trabajador_formulario.get('telefono')?.touched){
       mensaje="El campo no puede estar vacío"
   }
-  else if(this.trabajador_formulario.get('telefono')?.errors?.['pattern']){
-    mensaje="El número debe ser ingresado en el formato (XXX)-XXX-XXXX"
-
+  else if(this.trabajador_formulario.get('telefono')?.errors?.['notOnlyWhitespace'] && this.trabajador_formulario.get('telefono')?.touched) {
+    mensaje= "El campo no puede consistir solo en espacios en blanco.";
   }
   return mensaje;
 }

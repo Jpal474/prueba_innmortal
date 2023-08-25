@@ -20,6 +20,7 @@
     "@angular/router": "^16.1.0",
     "@auth0/angular-jwt": "^5.1.2",
     "@auth0/auth0-angular": "^2.2.1",
+    "ngx-mask": "^16.2.9",
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -21,7 +21,7 @@ items2:number=5;
 supermercado:Supermercado={
   nombre: '',
   calle: '',
-  numero: 0,
+  numero: '',
   colonia: '',
   estado: '',
   ciudad: '',

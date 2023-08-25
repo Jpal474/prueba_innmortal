@@ -10,6 +10,10 @@ img {
     border-radius: 50%;
 }
 
+#preview-image {
+    background: currentColor;
+}
+
 .img2 {
     width: 35px;
     height: 35px;

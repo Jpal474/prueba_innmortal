@@ -4,7 +4,7 @@ export interface Encargado{
     id?: string;
     nombre: string;
     apellido_paterno: string;
-    apellido_materno: string;
+    apellido_materno?: string;
     genero:EncargadoGenero;
     fecha_nacimiento: string;
     correo: string;

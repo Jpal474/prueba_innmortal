@@ -1,6 +1,5 @@
  .form-control:focus {
      outline: 0px none #fff !important;
-     border-color: transparent;
  }
  
  .form-control {
@@ -8,5 +7,5 @@
  }
  
  .input-group label {
-     z-index: 1;
+     z-index: 10;
  }

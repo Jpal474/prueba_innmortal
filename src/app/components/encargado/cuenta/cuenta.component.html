@@ -6,8 +6,9 @@
                 <label for="file-upload" class="custom-file-upload">
             <img src="../../../../assets/recursos/encargado/ICONOS GENERALES/camara.png" class="img2">
         </label>
-                <input id="file-upload" class="file-upload" type="file" (change)="previewImage($event)" formControlName="imagen" />
+                <input id="file-upload" class="file-upload" type="file" accept=".jpg, .png, .jpeg" (change)="previewImage($event)" formControlName="imagen" [class.is-invalid]="imagenNoValida" />
             </div>
+            <small *ngIf="imagenNoValida" class="text-danger"> {{imagenNoValida}}</small>
         </form>
 
     </div>

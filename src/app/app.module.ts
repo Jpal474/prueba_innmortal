@@ -10,7 +10,7 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
 import { LandingModule } from './components/general/landing/landing.module';
 import { CuentaComponent } from './components/encargado/cuenta/cuenta.component';
 import { VerificarComponent } from './components/verificar/verificar.component';
-
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask, provideNgxMask} from 'ngx-mask'
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +25,8 @@ import { VerificarComponent } from './components/verificar/verificar.component';
     AdminModule,
     EncargadoModule,
     LandingModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
 
   ],
   providers: [{
@@ -33,6 +35,12 @@ import { VerificarComponent } from './components/verificar/verificar.component';
     multi: true,
     
   },
+  provideEnvironmentNgxMask(),
+  provideNgxMask(),
+],
+exports:[
+  NgxMaskDirective,
+  NgxMaskPipe,
 ],
   bootstrap: [AppComponent]
 })

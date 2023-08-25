@@ -33,8 +33,8 @@ export class EncargadoService {
     return this.httpClient.get<Departamento>(`${this.BASE_URL}/departamentos/departamento/${id}`)
   }
 
-  getDepartamentoByNombre(nombre:string):Observable<Departamento>{
-    return this.httpClient.get<Departamento>(`${this.BASE_URL}/departamentos/${nombre}`)
+  getDepartamentoByNombre(nombre:string, id:string):Observable<Departamento>{
+    return this.httpClient.get<Departamento>(`${this.BASE_URL}/departamentos/${nombre}/${id}`)
   }
 
   createDepartamento(departamento:DepartamentoSupermercado):Observable<Departamento>{

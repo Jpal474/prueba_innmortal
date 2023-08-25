@@ -14,6 +14,7 @@ import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 import { CapitalizadoPipe } from 'src/app/pipes/capitalizado.pipe';
 import { encargadoSupermercadoGuard } from 'src/app/guards/encargado-supermercado.guard';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask, provideNgxMask } from 'ngx-mask';
 
 
 
@@ -35,13 +36,23 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RouterModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
-  providers:[provideRouter([
+  providers:[
+    provideEnvironmentNgxMask(),
+  provideNgxMask(),
+    provideRouter([
     {
       path: 'encargado/registrar-supermercado',
       component: RegistrosupermercadoComponent,
       canActivate: [encargadoSupermercadoGuard],
     }
-  ])]
+  ]),
+],
+exports:[
+  NgxMaskDirective,
+  NgxMaskPipe,
+],
 })
 export class EncargadoModule { }

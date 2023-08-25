@@ -20,7 +20,7 @@ export class DepartamentosComponent implements OnInit{
     supermercado:{id:'',
     nombre:'',
     calle:'',
-    numero:0,
+    numero:'',
     colonia:'',
     estado:'',
     razon_social:'',
@@ -29,7 +29,7 @@ export class DepartamentosComponent implements OnInit{
     codigo_postal:0,
     telefono:'',}
   }
- departamentos!:Departamento[]
+ departamentos:Departamento[]=[]
 constructor(
   private encargadoService:EncargadoService,
   private adminService:AdminService
@@ -85,9 +85,73 @@ constructor(
       inputLabel: 'Nombre',
       inputPlaceholder: 'Ingrese Nombre del Departamento'
     })
+    console.log('antes de if para departamento y localstorage');
     
     if (departamento && localStorage.getItem('id_supermercado')!==null) {
+      console.log('entra al if para departamento');
+      
+      let result=true
+      console.log('this.departamentos',this.departamentos);
+      
+      if(this.departamentos.length !==0 ){
+        console.log('antes de for');
+      for (let i = 0; i < this.departamentos.length; i++) {
+        console.log('entra al for');
+        
+        if(departamento.toLowerCase() === this.departamentos[i].nombre){
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No puedes registrar dos Departamentos con el mismo nombre',
+          })
+          result=false;
+          break;
+        } 
+        }
+        if(result){
+          console.log('entra al if para result');
       console.log(`Departamento Registrado: ${departamento}`)
+      this.adminService.getSupermercado(localStorage.getItem('id_supermercado')!)
+      .subscribe({
+        next:(res:Supermercado) => {
+        console.log(`Respuesta Res ${res.id}`)
+        this.departamento_supermercado.supermercado=res;
+        this.departamento_supermercado.nombre=departamento.toLowerCase();
+      console.log(`Departamento: ${this.departamento_supermercado.nombre}`)
+      console.log(`Supermercado: ${this.departamento_supermercado.supermercado}`)
+      this.encargadoService.createDepartamento(this.departamento_supermercado)
+              .subscribe({
+                next: (res:Departamento)=>{
+                Swal.fire(`Departamento Registrado: ${departamento}`)
+                setTimeout(function(){
+                  window.location.reload();
+               }, 2000);
+              },
+            error: (e) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: e,
+              })
+            }
+            })
+              
+    
+    
+      },
+    error: (e) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: e
+      })
+    }
+    });
+  }//cierre del if para result
+  }
+  else{
+    console.log('else para this.departamentos');
+    console.log(`Departamento Registrado: ${departamento}`)
       this.adminService.getSupermercado(localStorage.getItem('id_supermercado')!)
       .subscribe({
         next:(res:Supermercado) => {
@@ -125,8 +189,8 @@ constructor(
       })
     }
     });
-      
-    }
+  } //ciere del if para this.departamentos.length!==0
+    }//cierre del if general
     if(departamento && localStorage.getItem('id_supermercado') === null){
       Swal.fire({
         icon: 'error',

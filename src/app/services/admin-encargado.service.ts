@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UpdateEncargado } from '../interfaces/update-encargado.interface';
 import { Supermercado } from '../interfaces/supermercado.interface';
@@ -12,6 +12,9 @@ import { Encargado } from '../interfaces/encargados.interface';
 export class AdminService {
 
  BASE_URL:string='http://localhost:3000'
+ headers= new HttpHeaders({
+  Authorization: `Bearer ${localStorage.getItem('token')}`,
+});
 
   constructor(private httpClient: HttpClient) { }
 

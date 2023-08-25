@@ -2,7 +2,7 @@ export interface Supermercado{
     id?:string;
     nombre: string;
     calle: string;
-    numero: number;
+    numero: string;
     colonia: string;
     estado: string;
     ciudad: string;

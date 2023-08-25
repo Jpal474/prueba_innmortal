@@ -48,7 +48,7 @@ constructor(
 
  crearFormulario(){
   this.imagen_formulario=this.fb.group({
-    imagen:['']
+    imagen:['',]
   
   })
 }
@@ -94,57 +94,16 @@ base64ToBlob(base64String: string, mimeType: string): Blob {
 }
 
 
-getDepartamentos(){
-  
-  if(localStorage.getItem('id_supermercado') !== null){
-this.encargadoService.getDepartamentosBySuperId(localStorage.getItem('id_supermercado')!)
-.subscribe({
-  next: (res:Departamento[]) => {
-    this.departamentos=res;
-    this.getTrabajadores(this.departamentos)
-  },
-  error: (e) => {
-    Swal.fire({
-      icon: 'error',
-      text: e,
-    })
-  }
-})
-}
-}
-
-getTrabajadores(dptos:Departamento[]){
-  for (let i = 0; i < dptos.length; i++) {
-    this.encargadoService.getTrabajadores(dptos[i].id!)
-    .subscribe({
-      next:(res:Trabajador[]) => {
-        this.trabajadores_num[i]=res.length
-        for (let j=0; j<res.length;j++){
-          this.trabajadores.push(res[j])
-        }
-        
-        console.log(`Trabajadores ${this.trabajadores}`);
-        console.log(`Numero de Trabajadores ${this.trabajadores_num}`)
-      },
-      error: (e) => {
-        Swal.fire({
-          icon: 'error',
-          text: e,
-        })
-      }
-    })
-    
-  }
-}
-
-
-
-
   previewImage(event: Event): void {
     const fileInput = event.target as HTMLInputElement;
     const previewImage = document.getElementById('preview-image') as HTMLImageElement;
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"]
 
     if (fileInput.files && fileInput.files[0]) {
+      const maxSize = 1024 * 1024; // Tamaño máximo en bytes (1MB)
+    if(allowedTypes.includes(fileInput.files[0].type)){
+      if(fileInput.files[0].size < maxSize){
+      
       const reader = new FileReader();
 
       reader.onload = (e: ProgressEvent<FileReader>) => {
@@ -157,11 +116,27 @@ getTrabajadores(dptos:Departamento[]){
       console.log(fileInput.files[0],'----->');
       this.file = fileInput.files[0];
       this.guardarImagenPerfil()
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Tamaño de Archivo Mayor a 1MB',
+      })
+    }
       
     }
+  }else{
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Formato de Archivo No Admitido',
+    })
+  }
   }
 
   guardarImagenPerfil(){
+    if(!this.imagen_formulario.invalid){
     console.log(this.imagen_formulario.value);
     
     this.encargadoService.uploadImagenPerfil(localStorage.getItem('id_usuario')!,this.file )
@@ -177,6 +152,15 @@ getTrabajadores(dptos:Departamento[]){
         })
       }
     })
+  }
+  }
+
+ get imagenNoValida(){
+    let mensaje='';
+    if(this.imagen_formulario.get('imagen')?.errors?.['invalidSize']){
+      mensaje="El tamaño de la imagen deber menor a 1MB"
+    }
+    return mensaje
   }
  
 }
